@@ -27,6 +27,11 @@
 
     body {
       background-color: #000;
+      background-image:
+        radial-gradient(ellipse 80% 50% at 20% 10%, rgba(30,111,255,0.18) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 40% at 80% 30%, rgba(30,111,255,0.12) 0%, transparent 55%),
+        radial-gradient(ellipse 70% 50% at 50% 70%, rgba(30,111,255,0.10) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 40% at 10% 80%, rgba(77,145,255,0.08) 0%, transparent 50%);
       color: #fff;
       font-family: Inter, -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif;
       -webkit-font-smoothing: antialiased;
@@ -299,11 +304,11 @@
 
   <div style="display:flex;align-items:center;gap:4px;" class="hidden-mobile">
     <a href="#" class="nav-link">Home</a>
-    <a href="#services" class="nav-link">Services</a>
-    <a href="#process" class="nav-link">Process</a>
     <a href="#results" class="nav-link">Results</a>
+    <a href="#process" class="nav-link">Process</a>
     <a href="#pricing" class="nav-link">Pricing</a>
     <a href="#contact" class="nav-link">Contact</a>
+    <a href="#faq" class="nav-link">FAQ</a>
   </div>
 
   <div style="display:flex;align-items:center;gap:10px;">
@@ -331,7 +336,7 @@
 
   <!-- Sub -->
   <p class="t-subtitle animate-fadeinup delay-2" style="max-width:580px;color:var(--text-secondary);margin-bottom:40px;font-weight:400;">
-    We design and build high-performance landing pages that turn visitors into customers.
+    We design and build high-performance websites that turn visitors into customers.
   </p>
 
   <!-- CTAs -->
@@ -340,382 +345,169 @@
     <a href="#results" class="btn-ghost" style="padding:14px 28px;font-size:16px;">See our work</a>
   </div>
 
-  <!-- Social proof line -->
-  <div class="animate-fadeinup delay-4" style="margin-top:32px;display:flex;align-items:center;gap:12px;color:var(--text-muted);font-size:14px;">
-    <div style="display:flex;">
-      <img src="https://placehold.co/28x28/1a1a2e/4D91FF?text=A" style="width:28px;height:28px;border-radius:50%;border:2px solid #000;" />
-      <img src="https://placehold.co/28x28/1a2e1a/4DF1A4?text=B" style="width:28px;height:28px;border-radius:50%;border:2px solid #000;margin-left:-8px;" />
-      <img src="https://placehold.co/28x28/2e1a1a/F14D4D?text=C" style="width:28px;height:28px;border-radius:50%;border:2px solid #000;margin-left:-8px;" />
-      <img src="https://placehold.co/28x28/1a1a2e/D4AF37?text=D" style="width:28px;height:28px;border-radius:50%;border:2px solid #000;margin-left:-8px;" />
-    </div>
-    <span>Trusted by <strong style="color:rgba(255,255,255,0.8);">200+ businesses</strong> worldwide</span>
-  </div>
 
-  <!-- Hero app window -->
-  <div class="animate-fadeinup delay-4 animate-float" style="margin-top:72px;width:100%;max-width:1100px;position:relative;">
+  <!-- Hero: Overlapping browser mockups -->
+  <div class="animate-fadeinup delay-4" style="margin-top:72px;width:100%;max-width:1100px;position:relative;height:520px;">
     <!-- Glow under -->
     <div style="position:absolute;bottom:-40px;left:50%;transform:translateX(-50%);width:70%;height:80px;background:radial-gradient(ellipse,rgba(30,111,255,0.25) 0%,transparent 70%);filter:blur(20px);pointer-events:none;"></div>
 
-    <div class="app-window">
+    <!-- Back left: E-commerce site -->
+    <div class="app-window" style="position:absolute;width:68%;left:0%;top:48px;transform:rotate(-5deg);transform-origin:bottom center;opacity:0.65;box-shadow:0 40px 120px rgba(0,0,0,0.6);">
       <div class="window-chrome">
         <div class="dot" style="background:#FF5F57;"></div>
         <div class="dot" style="background:#FEBC2E;"></div>
         <div class="dot" style="background:#28C840;"></div>
         <div style="flex:1;display:flex;justify-content:center;">
-          <div style="background:#1A1A1A;border:1px solid rgba(255,255,255,0.08);border-radius:6px;padding:3px 16px;font-size:12px;color:rgba(255,255,255,0.4);">webgiants.io</div>
+          <div style="background:#1A1A1A;border:1px solid rgba(255,255,255,0.08);border-radius:6px;padding:3px 16px;font-size:12px;color:rgba(255,255,255,0.4);">luxeboutique.com</div>
         </div>
       </div>
-      <!-- Mockup content -->
-      <div style="display:grid;grid-template-columns:220px 1fr;height:480px;">
-        <!-- Sidebar -->
-        <div style="background:#0D0D0D;border-right:1px solid rgba(255,255,255,0.06);padding:20px 16px;display:flex;flex-direction:column;gap:6px;">
-          <div style="font-size:10px;color:var(--text-muted);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:8px;padding:0 8px;">Projects</div>
-          <div style="background:rgba(30,111,255,0.15);border:1px solid rgba(30,111,255,0.25);border-radius:8px;padding:10px 12px;font-size:13px;color:#fff;font-weight:500;">E-Commerce Platform</div>
-          <div style="padding:10px 12px;font-size:13px;color:rgba(255,255,255,0.5);">SaaS Dashboard</div>
-          <div style="padding:10px 12px;font-size:13px;color:rgba(255,255,255,0.5);">Brand Website</div>
-          <div style="padding:10px 12px;font-size:13px;color:rgba(255,255,255,0.5);">Mobile App Landing</div>
-          <div style="padding:10px 12px;font-size:13px;color:rgba(255,255,255,0.5);">Portfolio Site</div>
-          <div style="margin-top:auto;padding:10px 12px;font-size:13px;color:rgba(255,255,255,0.3);border-top:1px solid rgba(255,255,255,0.06);padding-top:20px;">+ New Project</div>
+      <div style="height:310px;background:linear-gradient(160deg,#0a0a14 0%,#0d0d1a 100%);padding:20px;display:flex;flex-direction:column;gap:14px;">
+        <div style="display:flex;justify-content:space-between;align-items:center;">
+          <div style="height:12px;width:80px;background:rgba(255,255,255,0.2);border-radius:3px;"></div>
+          <div style="display:flex;gap:10px;align-items:center;">
+            <div style="height:9px;width:36px;background:rgba(255,255,255,0.08);border-radius:3px;"></div>
+            <div style="height:9px;width:36px;background:rgba(255,255,255,0.08);border-radius:3px;"></div>
+            <div style="height:26px;width:26px;background:rgba(255,255,255,0.06);border-radius:50%;"></div>
+          </div>
         </div>
-        <!-- Main area -->
-        <div style="padding:28px;display:flex;flex-direction:column;gap:20px;background:#080808;">
-          <div style="display:flex;align-items:center;justify-content:space-between;">
-            <div>
-              <div style="font-size:18px;font-weight:700;letter-spacing:-0.02em;">E-Commerce Platform</div>
-              <div style="font-size:13px;color:var(--text-muted);margin-top:4px;">Last updated 2 hours ago</div>
+        <div style="background:linear-gradient(135deg,rgba(180,120,255,0.15),rgba(255,80,120,0.1));border-radius:10px;padding:22px;display:flex;align-items:center;justify-content:space-between;flex:1;">
+          <div>
+            <div style="height:8px;width:70px;background:rgba(200,150,255,0.4);border-radius:3px;margin-bottom:10px;"></div>
+            <div style="height:28px;width:150px;background:linear-gradient(90deg,rgba(255,255,255,0.25),rgba(255,255,255,0.1));border-radius:5px;margin-bottom:8px;"></div>
+            <div style="height:10px;width:120px;background:rgba(255,255,255,0.08);border-radius:3px;margin-bottom:20px;"></div>
+            <div style="height:34px;width:110px;background:linear-gradient(135deg,#c084fc,#f472b6);border-radius:8px;opacity:0.9;"></div>
+          </div>
+          <div style="width:110px;height:110px;background:linear-gradient(135deg,rgba(200,150,255,0.2),rgba(255,80,120,0.15));border-radius:12px;border:1px solid rgba(200,150,255,0.15);"></div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;">
+          <div style="background:rgba(255,255,255,0.04);border-radius:8px;padding:10px;"><div style="height:36px;background:rgba(200,150,255,0.1);border-radius:5px;margin-bottom:6px;"></div><div style="height:7px;background:rgba(255,255,255,0.1);border-radius:2px;margin-bottom:4px;"></div><div style="height:7px;width:60%;background:rgba(200,150,255,0.2);border-radius:2px;"></div></div>
+          <div style="background:rgba(255,255,255,0.04);border-radius:8px;padding:10px;"><div style="height:36px;background:rgba(255,80,120,0.1);border-radius:5px;margin-bottom:6px;"></div><div style="height:7px;background:rgba(255,255,255,0.1);border-radius:2px;margin-bottom:4px;"></div><div style="height:7px;width:55%;background:rgba(255,80,120,0.2);border-radius:2px;"></div></div>
+          <div style="background:rgba(255,255,255,0.04);border-radius:8px;padding:10px;"><div style="height:36px;background:rgba(200,150,255,0.07);border-radius:5px;margin-bottom:6px;"></div><div style="height:7px;background:rgba(255,255,255,0.1);border-radius:2px;margin-bottom:4px;"></div><div style="height:7px;width:70%;background:rgba(200,150,255,0.15);border-radius:2px;"></div></div>
+          <div style="background:rgba(255,255,255,0.04);border-radius:8px;padding:10px;"><div style="height:36px;background:rgba(255,80,120,0.07);border-radius:5px;margin-bottom:6px;"></div><div style="height:7px;background:rgba(255,255,255,0.1);border-radius:2px;margin-bottom:4px;"></div><div style="height:7px;width:65%;background:rgba(255,80,120,0.15);border-radius:2px;"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Back right: SaaS site -->
+    <div class="app-window" style="position:absolute;width:68%;right:0%;top:48px;transform:rotate(5deg);transform-origin:bottom center;opacity:0.65;box-shadow:0 40px 120px rgba(0,0,0,0.6);">
+      <div class="window-chrome">
+        <div class="dot" style="background:#FF5F57;"></div>
+        <div class="dot" style="background:#FEBC2E;"></div>
+        <div class="dot" style="background:#28C840;"></div>
+        <div style="flex:1;display:flex;justify-content:center;">
+          <div style="background:#1A1A1A;border:1px solid rgba(255,255,255,0.08);border-radius:6px;padding:3px 16px;font-size:12px;color:rgba(255,255,255,0.4);">flowanalytics.io</div>
+        </div>
+      </div>
+      <div style="height:310px;background:linear-gradient(160deg,#020c14 0%,#051220 100%);padding:20px;display:flex;flex-direction:column;gap:14px;">
+        <div style="display:flex;justify-content:space-between;align-items:center;">
+          <div style="display:flex;align-items:center;gap:8px;"><div style="height:16px;width:16px;background:rgba(0,200,255,0.5);border-radius:4px;"></div><div style="height:12px;width:70px;background:rgba(255,255,255,0.18);border-radius:3px;"></div></div>
+          <div style="display:flex;gap:8px;align-items:center;">
+            <div style="height:9px;width:40px;background:rgba(255,255,255,0.08);border-radius:3px;"></div>
+            <div style="height:9px;width:40px;background:rgba(255,255,255,0.08);border-radius:3px;"></div>
+            <div style="height:28px;width:80px;background:rgba(0,200,255,0.2);border:1px solid rgba(0,200,255,0.3);border-radius:7px;"></div>
+          </div>
+        </div>
+        <div style="text-align:center;padding:16px 0 8px;">
+          <div style="height:8px;width:120px;background:rgba(0,200,255,0.25);border-radius:3px;margin:0 auto 12px;"></div>
+          <div style="height:28px;width:70%;background:linear-gradient(90deg,rgba(255,255,255,0.2),rgba(0,200,255,0.15));border-radius:6px;margin:0 auto 10px;"></div>
+          <div style="height:10px;width:55%;background:rgba(255,255,255,0.07);border-radius:3px;margin:0 auto 18px;"></div>
+          <div style="display:flex;gap:10px;justify-content:center;">
+            <div style="height:36px;width:120px;background:rgba(0,200,255,0.3);border-radius:8px;"></div>
+            <div style="height:36px;width:100px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:8px;"></div>
+          </div>
+        </div>
+        <div style="flex:1;background:rgba(0,200,255,0.04);border:1px solid rgba(0,200,255,0.08);border-radius:10px;padding:14px;display:flex;align-items:flex-end;gap:5px;">
+          <div style="flex:1;height:55%;background:rgba(0,200,255,0.15);border-radius:3px 3px 0 0;"></div>
+          <div style="flex:1;height:75%;background:rgba(0,200,255,0.2);border-radius:3px 3px 0 0;"></div>
+          <div style="flex:1;height:40%;background:rgba(0,200,255,0.12);border-radius:3px 3px 0 0;"></div>
+          <div style="flex:1;height:90%;background:rgba(0,200,255,0.3);border-radius:3px 3px 0 0;"></div>
+          <div style="flex:1;height:65%;background:rgba(0,200,255,0.18);border-radius:3px 3px 0 0;"></div>
+          <div style="flex:1;height:80%;background:rgba(0,200,255,0.25);border-radius:3px 3px 0 0;"></div>
+          <div style="flex:1;height:95%;background:rgba(0,200,255,0.35);border-radius:3px 3px 0 0;"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Front center: beautiful landing page (main) -->
+    <div class="app-window animate-float" style="position:absolute;width:62%;left:50%;transform:translateX(-50%);top:0;z-index:10;box-shadow:0 60px 140px rgba(0,0,0,0.8),0 0 0 1px rgba(255,255,255,0.08);">
+      <div class="window-chrome">
+        <div class="dot" style="background:#FF5F57;"></div>
+        <div class="dot" style="background:#FEBC2E;"></div>
+        <div class="dot" style="background:#28C840;"></div>
+        <div style="flex:1;display:flex;justify-content:center;">
+          <div style="background:#1A1A1A;border:1px solid rgba(255,255,255,0.08);border-radius:6px;padding:3px 16px;font-size:12px;color:rgba(255,255,255,0.4);">stellarstudio.co</div>
+        </div>
+      </div>
+      <div style="height:380px;background:#080810;overflow:hidden;position:relative;">
+        <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% -20%,rgba(30,111,255,0.2) 0%,transparent 60%),radial-gradient(ellipse at 80% 80%,rgba(120,60,255,0.1) 0%,transparent 50%);"></div>
+        <div style="position:relative;z-index:1;padding:22px 28px;display:flex;flex-direction:column;gap:18px;height:100%;">
+          <div style="display:flex;justify-content:space-between;align-items:center;">
+            <div style="display:flex;align-items:center;gap:8px;">
+              <div style="width:28px;height:28px;background:linear-gradient(135deg,#1E6FFF,#7C3AFF);border-radius:7px;"></div>
+              <div style="height:11px;width:80px;background:rgba(255,255,255,0.22);border-radius:3px;"></div>
             </div>
-            <div style="display:flex;gap:8px;">
-              <div style="background:rgba(30,111,255,0.15);border:1px solid rgba(30,111,255,0.25);border-radius:6px;padding:6px 14px;font-size:12px;color:var(--blue-bright);font-weight:600;">Live Preview</div>
-              <div style="background:var(--blue);border-radius:6px;padding:6px 14px;font-size:12px;color:#fff;font-weight:600;">Deploy</div>
+            <div style="display:flex;align-items:center;gap:10px;">
+              <div style="height:9px;width:36px;background:rgba(255,255,255,0.1);border-radius:3px;"></div>
+              <div style="height:9px;width:36px;background:rgba(255,255,255,0.1);border-radius:3px;"></div>
+              <div style="height:9px;width:36px;background:rgba(255,255,255,0.1);border-radius:3px;"></div>
+              <div style="height:30px;width:72px;background:linear-gradient(135deg,#1E6FFF,#4D91FF);border-radius:8px;box-shadow:0 4px 16px rgba(30,111,255,0.4);"></div>
             </div>
           </div>
-          <!-- Preview area -->
-          <div style="flex:1;background:#0F0F0F;border:1px solid rgba(255,255,255,0.06);border-radius:12px;overflow:hidden;position:relative;">
-            <!-- Fake website preview -->
-            <div style="background:linear-gradient(135deg,#0A0A1A 0%,#0A1A0A 100%);height:100%;padding:24px;display:flex;flex-direction:column;gap:16px;">
-              <div style="display:flex;justify-content:space-between;align-items:center;">
-                <div style="height:14px;width:100px;background:rgba(255,255,255,0.15);border-radius:4px;"></div>
-                <div style="display:flex;gap:8px;">
-                  <div style="height:10px;width:40px;background:rgba(255,255,255,0.08);border-radius:3px;"></div>
-                  <div style="height:10px;width:40px;background:rgba(255,255,255,0.08);border-radius:3px;"></div>
-                  <div style="height:10px;width:40px;background:rgba(255,255,255,0.08);border-radius:3px;"></div>
-                  <div style="height:24px;width:60px;background:var(--blue);border-radius:5px;opacity:0.9;"></div>
-                </div>
-              </div>
-              <div style="background:linear-gradient(135deg,rgba(30,111,255,0.12),rgba(100,60,255,0.08));border-radius:10px;padding:24px;flex:1;">
-                <div style="height:32px;width:60%;background:linear-gradient(90deg,rgba(255,255,255,0.2),rgba(255,255,255,0.08));border-radius:6px;margin-bottom:12px;"></div>
-                <div style="height:14px;width:80%;background:rgba(255,255,255,0.08);border-radius:4px;margin-bottom:8px;"></div>
-                <div style="height:14px;width:65%;background:rgba(255,255,255,0.06);border-radius:4px;margin-bottom:24px;"></div>
-                <div style="height:40px;width:140px;background:var(--blue);border-radius:8px;opacity:0.85;"></div>
-              </div>
-              <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;">
-                <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.06);border-radius:8px;padding:14px;">
-                  <div style="height:50px;background:rgba(30,111,255,0.1);border-radius:6px;margin-bottom:10px;"></div>
-                  <div style="height:10px;background:rgba(255,255,255,0.1);border-radius:3px;margin-bottom:6px;"></div>
-                  <div style="height:10px;width:70%;background:rgba(255,255,255,0.06);border-radius:3px;"></div>
-                </div>
-                <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.06);border-radius:8px;padding:14px;">
-                  <div style="height:50px;background:rgba(100,60,255,0.1);border-radius:6px;margin-bottom:10px;"></div>
-                  <div style="height:10px;background:rgba(255,255,255,0.1);border-radius:3px;margin-bottom:6px;"></div>
-                  <div style="height:10px;width:55%;background:rgba(255,255,255,0.06);border-radius:3px;"></div>
-                </div>
-                <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.06);border-radius:8px;padding:14px;">
-                  <div style="height:50px;background:rgba(0,200,255,0.08);border-radius:6px;margin-bottom:10px;"></div>
-                  <div style="height:10px;background:rgba(255,255,255,0.1);border-radius:3px;margin-bottom:6px;"></div>
-                  <div style="height:10px;width:80%;background:rgba(255,255,255,0.06);border-radius:3px;"></div>
-                </div>
-              </div>
+          <div style="flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;gap:14px;">
+            <div style="height:8px;width:100px;background:linear-gradient(90deg,rgba(30,111,255,0.5),rgba(120,60,255,0.4));border-radius:20px;"></div>
+            <div style="display:flex;flex-direction:column;gap:7px;width:80%;">
+              <div style="height:26px;background:linear-gradient(90deg,rgba(255,255,255,0.25),rgba(255,255,255,0.12));border-radius:6px;"></div>
+              <div style="height:26px;width:80%;background:linear-gradient(90deg,rgba(30,111,255,0.3),rgba(120,60,255,0.2));border-radius:6px;margin:0 auto;"></div>
+            </div>
+            <div style="height:10px;width:65%;background:rgba(255,255,255,0.08);border-radius:3px;"></div>
+            <div style="height:10px;width:52%;background:rgba(255,255,255,0.06);border-radius:3px;"></div>
+            <div style="display:flex;gap:10px;margin-top:6px;">
+              <div style="height:38px;width:130px;background:linear-gradient(135deg,#1E6FFF,#4D91FF);border-radius:9px;box-shadow:0 8px 24px rgba(30,111,255,0.35);"></div>
+              <div style="height:38px;width:110px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);border-radius:9px;"></div>
             </div>
           </div>
-          <!-- Status bar -->
-          <div style="display:flex;gap:16px;">
-            <div style="display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text-muted);">
-              <span style="width:7px;height:7px;background:#28C840;border-radius:50%;"></span> Performance: 98/100
+          <div style="display:flex;gap:10px;">
+            <div style="flex:1;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:10px;padding:12px;">
+              <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><div style="width:22px;height:22px;background:linear-gradient(135deg,rgba(30,111,255,0.3),rgba(120,60,255,0.2));border-radius:6px;"></div><div style="height:8px;width:50px;background:rgba(255,255,255,0.12);border-radius:2px;"></div></div>
+              <div style="height:8px;background:rgba(255,255,255,0.08);border-radius:2px;margin-bottom:4px;"></div>
+              <div style="height:8px;width:70%;background:rgba(255,255,255,0.05);border-radius:2px;"></div>
             </div>
-            <div style="display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text-muted);">
-              <span style="width:7px;height:7px;background:var(--blue-bright);border-radius:50%;"></span> SEO: 100/100
+            <div style="flex:1;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:10px;padding:12px;">
+              <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><div style="width:22px;height:22px;background:linear-gradient(135deg,rgba(0,200,255,0.25),rgba(30,111,255,0.2));border-radius:6px;"></div><div style="height:8px;width:60px;background:rgba(255,255,255,0.12);border-radius:2px;"></div></div>
+              <div style="height:8px;background:rgba(255,255,255,0.08);border-radius:2px;margin-bottom:4px;"></div>
+              <div style="height:8px;width:55%;background:rgba(255,255,255,0.05);border-radius:2px;"></div>
             </div>
-            <div style="display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text-muted);">
-              <span style="width:7px;height:7px;background:#FEBC2E;border-radius:50%;"></span> Accessibility: 96/100
+            <div style="flex:1;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:10px;padding:12px;">
+              <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><div style="width:22px;height:22px;background:linear-gradient(135deg,rgba(74,222,128,0.25),rgba(30,111,255,0.15));border-radius:6px;"></div><div style="height:8px;width:45px;background:rgba(255,255,255,0.12);border-radius:2px;"></div></div>
+              <div style="height:8px;background:rgba(255,255,255,0.08);border-radius:2px;margin-bottom:4px;"></div>
+              <div style="height:8px;width:80%;background:rgba(255,255,255,0.05);border-radius:2px;"></div>
             </div>
           </div>
         </div>
       </div>
+    </div>
+
+    <!-- Floating metric badges -->
+    <div style="position:absolute;top:16px;left:2%;background:rgba(8,8,8,0.92);border:1px solid rgba(74,222,128,0.3);border-radius:12px;padding:10px 14px;backdrop-filter:blur(12px);z-index:20;box-shadow:0 8px 32px rgba(0,0,0,0.5);">
+      <div style="font-size:11px;color:rgba(255,255,255,0.45);margin-bottom:3px;letter-spacing:0.04em;">Conversion rate</div>
+      <div style="font-size:20px;font-weight:700;color:#4ADE80;letter-spacing:-0.03em;">+340%</div>
+    </div>
+    <div style="position:absolute;bottom:20px;left:3%;background:rgba(8,8,8,0.92);border:1px solid rgba(30,111,255,0.3);border-radius:12px;padding:10px 14px;backdrop-filter:blur(12px);z-index:20;box-shadow:0 8px 32px rgba(0,0,0,0.5);">
+      <div style="font-size:11px;color:rgba(255,255,255,0.45);margin-bottom:3px;letter-spacing:0.04em;">Performance</div>
+      <div style="font-size:20px;font-weight:700;color:#4D91FF;letter-spacing:-0.03em;">100 / 100</div>
+    </div>
+    <div style="position:absolute;top:16px;right:2%;background:rgba(8,8,8,0.92);border:1px solid rgba(254,188,46,0.3);border-radius:12px;padding:10px 14px;backdrop-filter:blur(12px);z-index:20;box-shadow:0 8px 32px rgba(0,0,0,0.5);">
+      <div style="font-size:11px;color:rgba(255,255,255,0.45);margin-bottom:3px;letter-spacing:0.04em;">Delivered in</div>
+      <div style="font-size:20px;font-weight:700;color:#FEBC2E;letter-spacing:-0.03em;">48 hours</div>
+    </div>
+    <div style="position:absolute;bottom:20px;right:3%;background:rgba(8,8,8,0.92);border:1px solid rgba(192,132,252,0.3);border-radius:12px;padding:10px 14px;backdrop-filter:blur(12px);z-index:20;box-shadow:0 8px 32px rgba(0,0,0,0.5);">
+      <div style="font-size:11px;color:rgba(255,255,255,0.45);margin-bottom:3px;letter-spacing:0.04em;">SEO score</div>
+      <div style="font-size:20px;font-weight:700;color:#C084FC;letter-spacing:-0.03em;">100 / 100</div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════
-     LOGO MARQUEE
-═══════════════════════════════════════ -->
-<div style="padding:40px 0;border-top:1px solid rgba(255,255,255,0.06);border-bottom:1px solid rgba(255,255,255,0.06);overflow:hidden;position:relative;">
-  <div style="display:flex;gap:64px;animation:marquee 20s linear infinite;width:max-content;">
-    <span style="font-size:14px;font-weight:600;color:rgba(255,255,255,0.3);white-space:nowrap;">Shopify Partners</span>
-    <span style="font-size:14px;font-weight:600;color:rgba(255,255,255,0.3);white-space:nowrap;">Next.js</span>
-    <span style="font-size:14px;font-weight:600;color:rgba(255,255,255,0.3);white-space:nowrap;">React</span>
-    <span style="font-size:14px;font-weight:600;color:rgba(255,255,255,0.3);white-space:nowrap;">Vercel</span>
-    <span style="font-size:14px;font-weight:600;color:rgba(255,255,255,0.3);white-space:nowrap;">AWS</span>
-    <span style="font-size:14px;font-weight:600;color:rgba(255,255,255,0.3);white-space:nowrap;">Stripe</span>
-    <span style="font-size:14px;font-weight:600;color:rgba(255,255,255,0.3);white-space:nowrap;">Figma</span>
-    <span style="font-size:14px;font-weight:600;color:rgba(255,255,255,0.3);white-space:nowrap;">TypeScript</span>
-    <span style="font-size:14px;font-weight:600;color:rgba(255,255,255,0.3);white-space:nowrap;">Tailwind CSS</span>
-    <span style="font-size:14px;font-weight:600;color:rgba(255,255,255,0.3);white-space:nowrap;">Shopify Partners</span>
-    <span style="font-size:14px;font-weight:600;color:rgba(255,255,255,0.3);white-space:nowrap;">Next.js</span>
-    <span style="font-size:14px;font-weight:600;color:rgba(255,255,255,0.3);white-space:nowrap;">React</span>
-    <span style="font-size:14px;font-weight:600;color:rgba(255,255,255,0.3);white-space:nowrap;">Vercel</span>
-    <span style="font-size:14px;font-weight:600;color:rgba(255,255,255,0.3);white-space:nowrap;">AWS</span>
-    <span style="font-size:14px;font-weight:600;color:rgba(255,255,255,0.3);white-space:nowrap;">Stripe</span>
-    <span style="font-size:14px;font-weight:600;color:rgba(255,255,255,0.3);white-space:nowrap;">Figma</span>
-    <span style="font-size:14px;font-weight:600;color:rgba(255,255,255,0.3);white-space:nowrap;">TypeScript</span>
-    <span style="font-size:14px;font-weight:600;color:rgba(255,255,255,0.3);white-space:nowrap;">Tailwind CSS</span>
-  </div>
-  <!-- Fade edges -->
-  <div style="position:absolute;left:0;top:0;bottom:0;width:80px;background:linear-gradient(90deg,#000,transparent);pointer-events:none;"></div>
-  <div style="position:absolute;right:0;top:0;bottom:0;width:80px;background:linear-gradient(-90deg,#000,transparent);pointer-events:none;"></div>
-</div>
-<style>
-@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-</style>
 
-<!-- ═══════════════════════════════════════
-     STATS
-═══════════════════════════════════════ -->
-<section style="padding:80px 24px;border-top:1px solid rgba(255,255,255,0.06);border-bottom:1px solid rgba(255,255,255,0.06);background:rgba(255,255,255,0.015);">
-  <div style="max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:40px;text-align:center;">
-    <div>
-      <div class="stat-num grad-text">200+</div>
-      <div class="t-copy" style="color:var(--text-muted);margin-top:8px;">Projects delivered</div>
-    </div>
-    <div>
-      <div class="stat-num grad-text">98%</div>
-      <div class="t-copy" style="color:var(--text-muted);margin-top:8px;">Client satisfaction</div>
-    </div>
-    <div>
-      <div class="stat-num grad-text">6×</div>
-      <div class="t-copy" style="color:var(--text-muted);margin-top:8px;">Avg. traffic increase</div>
-    </div>
-    <div>
-      <div class="stat-num grad-text">48h</div>
-      <div class="t-copy" style="color:var(--text-muted);margin-top:8px;">First prototype</div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════
-     SERVICES / FEATURES
-═══════════════════════════════════════ -->
-<section id="services" class="section-pad" style="max-width:1200px;margin:0 auto;">
-  <div style="text-align:center;margin-bottom:80px;">
-    <div class="tag" style="margin-bottom:20px;">Services</div>
-    <h2 class="t-hero" style="margin-bottom:16px;">Everything you need.<br/><span class="grad-text">Nothing you don't.</span></h2>
-  </div>
-
-  <!-- Feature 1: Design -->
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;margin-bottom:120px;">
-    <div>
-      <div class="tag" style="margin-bottom:20px;background:rgba(160,60,255,0.1);border-color:rgba(160,60,255,0.3);color:#C084FC;">Design First</div>
-      <h3 class="t-title" style="margin-bottom:20px;">Pixel-perfect design,<br/><span style="color:var(--text-secondary);">built to convert</span></h3>
-      <p class="t-largecopy" style="color:var(--text-secondary);margin-bottom:28px;">We don't use templates. Every design is custom-built for your brand and your audience. We obsess over spacing, typography, and micro-interactions.</p>
-      <ul style="display:flex;flex-direction:column;gap:14px;margin-bottom:32px;">
-        <li style="display:flex;align-items:center;gap:12px;font-size:15px;color:rgba(255,255,255,0.8);">
-          <span style="width:20px;height:20px;background:rgba(30,111,255,0.2);border:1px solid rgba(30,111,255,0.4);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--blue-bright);flex-shrink:0;">✓</span>
-          Custom Figma design system
-        </li>
-        <li style="display:flex;align-items:center;gap:12px;font-size:15px;color:rgba(255,255,255,0.8);">
-          <span style="width:20px;height:20px;background:rgba(30,111,255,0.2);border:1px solid rgba(30,111,255,0.4);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--blue-bright);flex-shrink:0;">✓</span>
-          Mobile-first responsive layouts
-        </li>
-        <li style="display:flex;align-items:center;gap:12px;font-size:15px;color:rgba(255,255,255,0.8);">
-          <span style="width:20px;height:20px;background:rgba(30,111,255,0.2);border:1px solid rgba(30,111,255,0.4);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--blue-bright);flex-shrink:0;">✓</span>
-          Interactive prototypes in 48 hours
-        </li>
-      </ul>
-      <a href="#contact" class="btn-primary">Start your design →</a>
-    </div>
-    <div style="position:relative;">
-      <div style="position:absolute;inset:-20px;background:radial-gradient(circle at 60% 40%,rgba(160,60,255,0.15),transparent 70%);pointer-events:none;"></div>
-      <div class="app-window" style="position:relative;z-index:1;">
-        <div class="window-chrome">
-          <div class="dot" style="background:#FF5F57;"></div>
-          <div class="dot" style="background:#FEBC2E;"></div>
-          <div class="dot" style="background:#28C840;"></div>
-          <div style="margin-left:12px;font-size:12px;color:rgba(255,255,255,0.3);">design-system.fig</div>
-        </div>
-        <div style="padding:24px;background:#080808;">
-          <div style="margin-bottom:20px;">
-            <div style="font-size:11px;color:var(--text-muted);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:12px;">Typography</div>
-            <div style="font-size:28px;font-weight:800;letter-spacing:-0.03em;background:linear-gradient(135deg,#fff,#7CB9FF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">The quick brown fox</div>
-            <div style="font-size:14px;color:rgba(255,255,255,0.5);margin-top:8px;line-height:1.7;">Jumps over the lazy dog. Consistent, scalable type system for every viewport.</div>
-          </div>
-          <div class="divider" style="margin-bottom:20px;"></div>
-          <div style="margin-bottom:20px;">
-            <div style="font-size:11px;color:var(--text-muted);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:12px;">Color Palette</div>
-            <div style="display:flex;gap:8px;">
-              <div style="width:40px;height:40px;border-radius:8px;background:var(--blue);box-shadow:0 4px 16px rgba(30,111,255,0.4);"></div>
-              <div style="width:40px;height:40px;border-radius:8px;background:#7C3AED;"></div>
-              <div style="width:40px;height:40px;border-radius:8px;background:#0EA5E9;"></div>
-              <div style="width:40px;height:40px;border-radius:8px;background:#10B981;"></div>
-              <div style="width:40px;height:40px;border-radius:8px;background:#F59E0B;"></div>
-              <div style="width:40px;height:40px;border-radius:8px;background:#EF4444;"></div>
-            </div>
-          </div>
-          <div>
-            <div style="font-size:11px;color:var(--text-muted);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:12px;">Components</div>
-            <div style="display:flex;gap:8px;flex-wrap:wrap;">
-              <div style="background:var(--blue);border-radius:8px;padding:8px 16px;font-size:13px;font-weight:600;">Primary</div>
-              <div style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);border-radius:8px;padding:8px 16px;font-size:13px;font-weight:500;">Ghost</div>
-              <div style="background:transparent;border:1px solid rgba(30,111,255,0.5);border-radius:8px;padding:8px 16px;font-size:13px;font-weight:500;color:var(--blue-bright);">Outline</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Feature 2: Performance -->
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;margin-bottom:120px;">
-    <div style="position:relative;order:1;" class="perf-visual">
-      <div style="position:absolute;inset:-20px;background:radial-gradient(circle at 40% 60%,rgba(30,111,255,0.15),transparent 70%);pointer-events:none;"></div>
-      <div class="app-window" style="position:relative;z-index:1;">
-        <div class="window-chrome">
-          <div class="dot" style="background:#FF5F57;"></div>
-          <div class="dot" style="background:#FEBC2E;"></div>
-          <div class="dot" style="background:#28C840;"></div>
-          <div style="margin-left:12px;font-size:12px;color:rgba(255,255,255,0.3);">Lighthouse Report</div>
-        </div>
-        <div style="padding:28px;background:#080808;">
-          <div style="text-align:center;margin-bottom:28px;">
-            <div style="font-size:72px;font-weight:900;letter-spacing:-0.04em;background:linear-gradient(135deg,#28C840,#4ADE80);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">99</div>
-            <div style="font-size:14px;color:var(--text-muted);margin-top:4px;">Performance Score</div>
-          </div>
-          <div style="display:flex;flex-direction:column;gap:16px;">
-            <div>
-              <div style="display:flex;justify-content:space-between;margin-bottom:8px;">
-                <span style="font-size:13px;color:rgba(255,255,255,0.7);">First Contentful Paint</span>
-                <span style="font-size:13px;color:#28C840;font-weight:600;">0.4s</span>
-              </div>
-              <div class="progress-bar"><div class="progress-fill" style="width:95%;"></div></div>
-            </div>
-            <div>
-              <div style="display:flex;justify-content:space-between;margin-bottom:8px;">
-                <span style="font-size:13px;color:rgba(255,255,255,0.7);">Largest Contentful Paint</span>
-                <span style="font-size:13px;color:#28C840;font-weight:600;">0.9s</span>
-              </div>
-              <div class="progress-bar"><div class="progress-fill" style="width:90%;background:linear-gradient(90deg,#28C840,#4ADE80);"></div></div>
-            </div>
-            <div>
-              <div style="display:flex;justify-content:space-between;margin-bottom:8px;">
-                <span style="font-size:13px;color:rgba(255,255,255,0.7);">Cumulative Layout Shift</span>
-                <span style="font-size:13px;color:#28C840;font-weight:600;">0.001</span>
-              </div>
-              <div class="progress-bar"><div class="progress-fill" style="width:99%;background:linear-gradient(90deg,#4ADE80,#86EFAC);"></div></div>
-            </div>
-            <div>
-              <div style="display:flex;justify-content:space-between;margin-bottom:8px;">
-                <span style="font-size:13px;color:rgba(255,255,255,0.7);">SEO Score</span>
-                <span style="font-size:13px;color:var(--blue-bright);font-weight:600;">100</span>
-              </div>
-              <div class="progress-bar"><div class="progress-fill" style="width:100%;"></div></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div style="order:2;">
-      <div class="tag" style="margin-bottom:20px;">Performance</div>
-      <h3 class="t-title" style="margin-bottom:20px;">Speed is your<br/><span class="grad-text">competitive edge</span></h3>
-      <p class="t-largecopy" style="color:var(--text-secondary);margin-bottom:28px;">Every 100ms of load time costs you conversions. We obsess over Core Web Vitals, bundle sizes, and server response times so you don't have to.</p>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:32px;">
-        <div style="background:var(--elevated);border:1px solid var(--border);border-radius:14px;padding:20px;">
-          <div style="font-size:28px;font-weight:800;letter-spacing:-0.03em;color:#28C840;">99</div>
-          <div style="font-size:13px;color:var(--text-muted);margin-top:4px;">Lighthouse score</div>
-        </div>
-        <div style="background:var(--elevated);border:1px solid var(--border);border-radius:14px;padding:20px;">
-          <div style="font-size:28px;font-weight:800;letter-spacing:-0.03em;color:var(--blue-bright);">&lt;1s</div>
-          <div style="font-size:13px;color:var(--text-muted);margin-top:4px;">Time to interactive</div>
-        </div>
-      </div>
-      <a href="#contact" class="btn-primary">See our performance →</a>
-    </div>
-  </div>
-
-  <!-- Feature 3: Process -->
-  <div id="process" style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;margin-bottom:80px;">
-    <div>
-      <div class="tag" style="margin-bottom:20px;background:rgba(20,200,120,0.1);border-color:rgba(20,200,120,0.3);color:#4ADE80;">Process</div>
-      <h3 class="t-title" style="margin-bottom:20px;">From brief to launch<br/><span style="color:var(--text-secondary);">in weeks, not months</span></h3>
-      <p class="t-largecopy" style="color:var(--text-secondary);margin-bottom:32px;">Our battle-tested process removes all the back-and-forth and confusion. You know what's happening at every step.</p>
-      <div style="display:flex;flex-direction:column;gap:0;">
-        <div style="display:flex;gap:20px;padding:20px 0;border-bottom:1px solid rgba(255,255,255,0.06);">
-          <div style="width:36px;height:36px;background:rgba(30,111,255,0.15);border:1px solid rgba(30,111,255,0.3);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:var(--blue-bright);flex-shrink:0;">1</div>
-          <div>
-            <div style="font-size:15px;font-weight:600;margin-bottom:4px;">Discovery & Strategy</div>
-            <div style="font-size:14px;color:var(--text-muted);">We learn your business, users, and goals. Output: clear scope doc.</div>
-          </div>
-        </div>
-        <div style="display:flex;gap:20px;padding:20px 0;border-bottom:1px solid rgba(255,255,255,0.06);">
-          <div style="width:36px;height:36px;background:rgba(160,60,255,0.15);border:1px solid rgba(160,60,255,0.3);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:#C084FC;flex-shrink:0;">2</div>
-          <div>
-            <div style="font-size:15px;font-weight:600;margin-bottom:4px;">Design & Prototype</div>
-            <div style="font-size:14px;color:var(--text-muted);">Interactive Figma prototype in 48 hours. Unlimited revisions.</div>
-          </div>
-        </div>
-        <div style="display:flex;gap:20px;padding:20px 0;border-bottom:1px solid rgba(255,255,255,0.06);">
-          <div style="width:36px;height:36px;background:rgba(20,200,120,0.15);border:1px solid rgba(20,200,120,0.3);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:#4ADE80;flex-shrink:0;">3</div>
-          <div>
-            <div style="font-size:15px;font-weight:600;margin-bottom:4px;">Build & Test</div>
-            <div style="font-size:14px;color:var(--text-muted);">Production-grade code with CI/CD. Cross-browser, accessibility tested.</div>
-          </div>
-        </div>
-        <div style="display:flex;gap:20px;padding:20px 0;">
-          <div style="width:36px;height:36px;background:rgba(250,180,0,0.15);border:1px solid rgba(250,180,0,0.3);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:#FACC15;flex-shrink:0;">4</div>
-          <div>
-            <div style="font-size:15px;font-weight:600;margin-bottom:4px;">Launch & Support</div>
-            <div style="font-size:14px;color:var(--text-muted);">Zero-downtime deployment. 90-day post-launch support included.</div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div style="position:relative;">
-      <div style="position:absolute;inset:-20px;background:radial-gradient(circle at 50% 50%,rgba(20,200,120,0.1),transparent 70%);pointer-events:none;"></div>
-      <div class="app-window" style="position:relative;z-index:1;">
-        <div class="window-chrome">
-          <div class="dot" style="background:#FF5F57;"></div>
-          <div class="dot" style="background:#FEBC2E;"></div>
-          <div class="dot" style="background:#28C840;"></div>
-          <div style="margin-left:12px;font-size:12px;color:rgba(255,255,255,0.3);">project-timeline.app</div>
-        </div>
-        <div style="padding:24px;background:#080808;display:flex;flex-direction:column;gap:14px;">
-          <div style="font-size:13px;font-weight:600;color:rgba(255,255,255,0.8);margin-bottom:4px;">FreshBrew E-Commerce · 4 week sprint</div>
-          <div style="display:flex;gap:10px;align-items:center;">
-            <div style="font-size:12px;color:var(--text-muted);width:100px;flex-shrink:0;">Discovery</div>
-            <div style="flex:1;height:28px;background:rgba(30,111,255,0.2);border:1px solid rgba(30,111,255,0.3);border-radius:6px;display:flex;align-items:center;padding:0 10px;font-size:12px;color:var(--blue-bright);font-weight:500;">Week 1 ✓</div>
-          </div>
-          <div style="display:flex;gap:10px;align-items:center;">
-            <div style="font-size:12px;color:var(--text-muted);width:100px;flex-shrink:0;">Design</div>
-            <div style="flex:1;height:28px;background:rgba(160,60,255,0.2);border:1px solid rgba(160,60,255,0.3);border-radius:6px;display:flex;align-items:center;padding:0 10px;font-size:12px;color:#C084FC;font-weight:500;">Week 1–2 ✓</div>
-          </div>
-          <div style="display:flex;gap:10px;align-items:center;">
-            <div style="font-size:12px;color:var(--text-muted);width:100px;flex-shrink:0;">Development</div>
-            <div style="flex:1;height:28px;background:rgba(20,200,120,0.2);border:1px solid rgba(20,200,120,0.3);border-radius:6px;display:flex;align-items:center;padding:0 10px;font-size:12px;color:#4ADE80;font-weight:500;">Week 2–4 ✓</div>
-          </div>
-          <div style="display:flex;gap:10px;align-items:center;">
-            <div style="font-size:12px;color:var(--text-muted);width:100px;flex-shrink:0;">QA & Launch</div>
-            <div style="flex:1;height:28px;background:rgba(250,180,0,0.15);border:1px solid rgba(250,180,0,0.25);border-radius:6px;display:flex;align-items:center;padding:0 10px;font-size:12px;color:#FACC15;font-weight:500;">Week 4 — Live 🚀</div>
-          </div>
-          <div class="divider"></div>
-          <div style="background:rgba(40,200,64,0.08);border:1px solid rgba(40,200,64,0.2);border-radius:10px;padding:14px;display:flex;align-items:center;gap:12px;">
-            <span style="font-size:20px;">🎉</span>
-            <div>
-              <div style="font-size:13px;font-weight:600;color:#4ADE80;">Launched on time</div>
-              <div style="font-size:12px;color:var(--text-muted);">+40% conversion rate in first month</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- ═══════════════════════════════════════
      RESULTS SECTION
@@ -741,7 +533,7 @@
       <div class="result-case">
         <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:32px;margin-bottom:32px;flex-wrap:wrap;">
           <div>
-            <div class="t-label" style="color:var(--blue-bright);margin-bottom:8px;">Case Study 01</div>
+            <div class="t-label" style="color:var(--blue-bright);margin-bottom:8px;">01</div>
             <h3 class="t-title" style="margin-bottom:8px;">Iron Peak Gym</h3>
             <p style="color:var(--text-muted);font-size:15px;">Independent fitness gym — memberships &amp; personal training</p>
           </div>
@@ -889,7 +681,7 @@
       <div class="result-case">
         <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:32px;margin-bottom:32px;flex-wrap:wrap;">
           <div>
-            <div class="t-label" style="color:var(--blue-bright);margin-bottom:8px;">Case Study 02</div>
+            <div class="t-label" style="color:var(--blue-bright);margin-bottom:8px;">02</div>
             <h3 class="t-title" style="margin-bottom:8px;">Luminary Studio</h3>
             <p style="color:var(--text-muted);font-size:15px;">Boutique photography &amp; creative agency</p>
           </div>
@@ -1000,7 +792,7 @@
       <div class="result-case">
         <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:32px;margin-bottom:32px;flex-wrap:wrap;">
           <div>
-            <div class="t-label" style="color:var(--blue-bright);margin-bottom:8px;">Case Study 03</div>
+            <div class="t-label" style="color:var(--blue-bright);margin-bottom:8px;">03</div>
             <h3 class="t-title" style="margin-bottom:8px;">NovaMed Clinic</h3>
             <p style="color:var(--text-muted);font-size:15px;">Medical aesthetics &amp; wellness center</p>
           </div>
@@ -1211,31 +1003,93 @@
 </section>
 
 <!-- ═══════════════════════════════════════
+     PROCESS SECTION
+═══════════════════════════════════════ -->
+<section id="process" style="padding:100px 24px;border-top:1px solid rgba(255,255,255,0.06);position:relative;overflow:hidden;">
+
+  <div style="position:absolute;top:0;left:50%;transform:translateX(-50%);width:600px;height:600px;background:radial-gradient(circle at 50% 30%,rgba(30,111,255,0.07),transparent 70%);pointer-events:none;"></div>
+
+  <div style="max-width:860px;margin:0 auto;position:relative;">
+
+    <!-- Header -->
+    <div style="text-align:center;margin-bottom:80px;">
+      <div class="tag" style="margin-bottom:20px;background:rgba(20,200,120,0.1);border-color:rgba(20,200,120,0.3);color:#4ADE80;">Process</div>
+      <h2 class="t-hero" style="margin-bottom:16px;">From brief to launch<br/><span style="color:var(--text-secondary);">in weeks, not months</span></h2>
+      <p class="t-largecopy" style="color:var(--text-secondary);max-width:480px;margin:0 auto;">Our process removes all the back-and-forth and confusion. You know what's happening at every step.</p>
+    </div>
+
+    <!-- Timeline -->
+    <div style="position:relative;display:flex;flex-direction:column;gap:0;">
+
+      <!-- Vertical spine -->
+      <div style="position:absolute;left:35px;top:16px;bottom:16px;width:1px;background:linear-gradient(to bottom,rgba(30,111,255,0.5),rgba(160,60,255,0.4),rgba(20,200,120,0.4),rgba(250,180,0,0.3));pointer-events:none;"></div>
+
+      <!-- Step 1 -->
+      <div style="display:flex;gap:32px;align-items:flex-start;padding:32px 0;border-bottom:1px solid rgba(255,255,255,0.05);">
+        <div style="width:70px;flex-shrink:0;display:flex;flex-direction:column;align-items:center;gap:0;">
+          <div style="width:32px;height:32px;background:var(--blue);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;box-shadow:0 0 20px rgba(30,111,255,0.5);position:relative;z-index:1;"></div>
+          <div style="font-size:clamp(56px,8vw,80px);font-weight:900;letter-spacing:-0.05em;line-height:1;color:rgba(30,111,255,0.12);margin-top:-8px;user-select:none;">01</div>
+        </div>
+        <div style="padding-top:4px;">
+          <h3 style="font-size:22px;font-weight:700;letter-spacing:-0.02em;margin-bottom:10px;">Discovery & Strategy</h3>
+          <p style="font-size:15px;color:var(--text-muted);line-height:1.65;">We take time to understand your business, your audience, and what success looks like for you before a single pixel is touched.</p>
+        </div>
+      </div>
+
+      <!-- Step 2 -->
+      <div style="display:flex;gap:32px;align-items:flex-start;padding:32px 0;border-bottom:1px solid rgba(255,255,255,0.05);">
+        <div style="width:70px;flex-shrink:0;display:flex;flex-direction:column;align-items:center;gap:0;">
+          <div style="width:32px;height:32px;background:rgba(160,60,255,0.2);border:1px solid rgba(160,60,255,0.5);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;color:#C084FC;box-shadow:0 0 16px rgba(160,60,255,0.3);position:relative;z-index:1;"></div>
+          <div style="font-size:clamp(56px,8vw,80px);font-weight:900;letter-spacing:-0.05em;line-height:1;color:rgba(160,60,255,0.1);margin-top:-8px;user-select:none;">02</div>
+        </div>
+        <div style="padding-top:4px;">
+          <h3 style="font-size:22px;font-weight:700;letter-spacing:-0.02em;margin-bottom:10px;">Design & Prototype</h3>
+          <p style="font-size:15px;color:var(--text-muted);line-height:1.65;">You get a fully interactive prototype in 48 hours — see and feel the site before you pay.</p>
+        </div>
+      </div>
+
+      <!-- Step 3 -->
+      <div style="display:flex;gap:32px;align-items:flex-start;padding:32px 0;border-bottom:1px solid rgba(255,255,255,0.05);">
+        <div style="width:70px;flex-shrink:0;display:flex;flex-direction:column;align-items:center;gap:0;">
+          <div style="width:32px;height:32px;background:rgba(20,200,120,0.2);border:1px solid rgba(20,200,120,0.5);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;color:#4ADE80;box-shadow:0 0 16px rgba(20,200,120,0.3);position:relative;z-index:1;"></div>
+          <div style="font-size:clamp(56px,8vw,80px);font-weight:900;letter-spacing:-0.05em;line-height:1;color:rgba(20,200,120,0.1);margin-top:-8px;user-select:none;">03</div>
+        </div>
+        <div style="padding-top:4px;">
+          <h3 style="font-size:22px;font-weight:700;letter-spacing:-0.02em;margin-bottom:10px;">Build & Test</h3>
+          <p style="font-size:15px;color:var(--text-muted);line-height:1.65;">Once you've approved the prototype, we build it out into a fully functioning site — tested across every device and browser, ready to go live.</p>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
      PRICING
 ═══════════════════════════════════════ -->
 <section id="pricing" class="section-pad" style="max-width:1100px;margin:0 auto;">
   <div style="text-align:center;margin-bottom:64px;">
     <div class="tag" style="margin-bottom:20px;">Pricing</div>
-    <h2 class="t-hero" style="margin-bottom:16px;">Simple, transparent<br/><span class="grad-text">pricing</span></h2>
-    <p class="t-largecopy" style="color:var(--text-secondary);max-width:480px;margin:0 auto;">No hourly billing surprises. Fixed-scope projects with clear deliverables.</p>
-  </div>
+    <h2 class="t-hero" style="margin-bottom:16px;">Choose a plan that<br/><span class="grad-text">works for you</span></h2>
+      </div>
 
-  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;">
+  <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:20px;max-width:740px;margin:0 auto;">
     <!-- Starter -->
     <div class="feature-card" style="padding:32px;">
       <div style="font-size:13px;font-weight:600;color:var(--text-muted);letter-spacing:0.06em;text-transform:uppercase;margin-bottom:16px;">Starter</div>
       <div style="display:flex;align-items:baseline;gap:4px;margin-bottom:8px;">
-        <span style="font-size:48px;font-weight:800;letter-spacing:-0.04em;">€300</span>
+        <span style="font-size:48px;font-weight:800;letter-spacing:-0.04em;">€199</span>
       </div>
       <div style="font-size:14px;color:var(--text-muted);margin-bottom:28px;">per month</div>
       <div class="divider" style="margin-bottom:24px;"></div>
       <ul style="display:flex;flex-direction:column;gap:12px;margin-bottom:32px;">
-        <li style="font-size:14px;color:rgba(255,255,255,0.7);display:flex;gap:10px;align-items:center;"><span style="color:#28C840;">✓</span> Up to 5 pages</li>
-        <li style="font-size:14px;color:rgba(255,255,255,0.7);display:flex;gap:10px;align-items:center;"><span style="color:#28C840;">✓</span> Custom design</li>
+        <li style="font-size:14px;color:rgba(255,255,255,0.7);display:flex;gap:10px;align-items:center;"><span style="color:#28C840;">✓</span> Up to 1 page</li>
+        <li style="font-size:14px;color:rgba(255,255,255,0.7);display:flex;gap:10px;align-items:center;"><span style="color:#28C840;">✓</span> Free domain &amp; hosting</li>
         <li style="font-size:14px;color:rgba(255,255,255,0.7);display:flex;gap:10px;align-items:center;"><span style="color:#28C840;">✓</span> Mobile responsive</li>
-        <li style="font-size:14px;color:rgba(255,255,255,0.7);display:flex;gap:10px;align-items:center;"><span style="color:#28C840;">✓</span> 30-day support</li>
-        <li style="font-size:14px;color:rgba(255,255,255,0.35);display:flex;gap:10px;align-items:center;"><span>—</span> E-commerce</li>
-        <li style="font-size:14px;color:rgba(255,255,255,0.35);display:flex;gap:10px;align-items:center;"><span>—</span> Custom integrations</li>
+        <li style="font-size:14px;color:rgba(255,255,255,0.7);display:flex;gap:10px;align-items:center;"><span style="color:#28C840;">✓</span> Free revisions for 30 days</li>
+        <li style="font-size:14px;color:rgba(255,255,255,0.35);display:flex;gap:10px;align-items:center;"><span>—</span> Custom design</li>
+        <li style="font-size:14px;color:rgba(255,255,255,0.35);display:flex;gap:10px;align-items:center;"><span>—</span> Google reviews integration</li>
       </ul>
       <a href="#contact" class="btn-ghost" style="display:block;text-align:center;">Get started</a>
     </div>
@@ -1246,38 +1100,19 @@
       <div style="position:absolute;top:16px;right:16px;background:var(--blue);color:#fff;font-size:11px;font-weight:700;padding:4px 10px;border-radius:100px;letter-spacing:0.04em;">MOST POPULAR</div>
       <div style="font-size:13px;font-weight:600;color:var(--blue-bright);letter-spacing:0.06em;text-transform:uppercase;margin-bottom:16px;">Growth</div>
       <div style="display:flex;align-items:baseline;gap:4px;margin-bottom:8px;">
-        <span style="font-size:48px;font-weight:800;letter-spacing:-0.04em;">€500</span>
+        <span style="font-size:48px;font-weight:800;letter-spacing:-0.04em;">€499</span>
       </div>
       <div style="font-size:14px;color:var(--text-muted);margin-bottom:28px;">per month</div>
       <div class="divider" style="margin-bottom:24px;"></div>
       <ul style="display:flex;flex-direction:column;gap:12px;margin-bottom:32px;">
-        <li style="font-size:14px;color:rgba(255,255,255,0.85);display:flex;gap:10px;align-items:center;"><span style="color:#28C840;">✓</span> Up to 15 pages</li>
-        <li style="font-size:14px;color:rgba(255,255,255,0.85);display:flex;gap:10px;align-items:center;"><span style="color:#28C840;">✓</span> Custom design system</li>
-        <li style="font-size:14px;color:rgba(255,255,255,0.85);display:flex;gap:10px;align-items:center;"><span style="color:#28C840;">✓</span> E-commerce ready</li>
-        <li style="font-size:14px;color:rgba(255,255,255,0.85);display:flex;gap:10px;align-items:center;"><span style="color:#28C840;">✓</span> 90-day support</li>
-        <li style="font-size:14px;color:rgba(255,255,255,0.85);display:flex;gap:10px;align-items:center;"><span style="color:#28C840;">✓</span> Google Reviews integration</li>
-        <li style="font-size:14px;color:rgba(255,255,255,0.35);display:flex;gap:10px;align-items:center;"><span>—</span> Custom integrations</li>
+        <li style="font-size:14px;color:rgba(255,255,255,0.85);display:flex;gap:10px;align-items:center;"><span style="color:#28C840;">✓</span> Up to 5 pages</li>
+        <li style="font-size:14px;color:rgba(255,255,255,0.85);display:flex;gap:10px;align-items:center;"><span style="color:#28C840;">✓</span> Free domain &amp; hosting</li>
+        <li style="font-size:14px;color:rgba(255,255,255,0.85);display:flex;gap:10px;align-items:center;"><span style="color:#28C840;">✓</span> Mobile responsive</li>
+        <li style="font-size:14px;color:rgba(255,255,255,0.85);display:flex;gap:10px;align-items:center;"><span style="color:#28C840;">✓</span> Free revisions for 90 days</li>
+        <li style="font-size:14px;color:rgba(255,255,255,0.85);display:flex;gap:10px;align-items:center;"><span style="color:#28C840;">✓</span> Custom design</li>
+        <li style="font-size:14px;color:rgba(255,255,255,0.85);display:flex;gap:10px;align-items:center;"><span style="color:#28C840;">✓</span> Google reviews integration</li>
       </ul>
       <a href="#contact" class="btn-primary" style="display:block;text-align:center;">Get started</a>
-    </div>
-
-    <!-- Enterprise -->
-    <div class="feature-card" style="padding:32px;">
-      <div style="font-size:13px;font-weight:600;color:var(--text-muted);letter-spacing:0.06em;text-transform:uppercase;margin-bottom:16px;">Enterprise</div>
-      <div style="display:flex;align-items:baseline;gap:4px;margin-bottom:8px;">
-        <span style="font-size:48px;font-weight:800;letter-spacing:-0.04em;">Custom</span>
-      </div>
-      <div style="font-size:14px;color:var(--text-muted);margin-bottom:28px;">Tailored to your needs</div>
-      <div class="divider" style="margin-bottom:24px;"></div>
-      <ul style="display:flex;flex-direction:column;gap:12px;margin-bottom:32px;">
-        <li style="font-size:14px;color:rgba(255,255,255,0.7);display:flex;gap:10px;align-items:center;"><span style="color:#28C840;">✓</span> Unlimited pages</li>
-        <li style="font-size:14px;color:rgba(255,255,255,0.7);display:flex;gap:10px;align-items:center;"><span style="color:#28C840;">✓</span> Full design system</li>
-        <li style="font-size:14px;color:rgba(255,255,255,0.7);display:flex;gap:10px;align-items:center;"><span style="color:#28C840;">✓</span> Custom integrations</li>
-        <li style="font-size:14px;color:rgba(255,255,255,0.7);display:flex;gap:10px;align-items:center;"><span style="color:#28C840;">✓</span> 1-year support</li>
-        <li style="font-size:14px;color:rgba(255,255,255,0.7);display:flex;gap:10px;align-items:center;"><span style="color:#28C840;">✓</span> Dedicated dev team</li>
-        <li style="font-size:14px;color:rgba(255,255,255,0.7);display:flex;gap:10px;align-items:center;"><span style="color:#28C840;">✓</span> SLA guarantee</li>
-      </ul>
-      <a href="#contact" class="btn-ghost" style="display:block;text-align:center;">Contact us</a>
     </div>
   </div>
 </section>
@@ -1312,7 +1147,7 @@
   <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:800px;height:400px;background:radial-gradient(ellipse,rgba(30,111,255,0.18) 0%,transparent 70%);pointer-events:none;"></div>
   <div style="max-width:700px;margin:0 auto;text-align:center;position:relative;">
     <div class="tag" style="margin-bottom:24px;">Ready to start?</div>
-    <h2 class="t-hero" style="margin-bottom:20px;">Let's build something<br/><span class="grad-text">extraordinary</span></h2>
+    <h2 class="t-hero" style="margin-bottom:20px;">The website your<br/><span class="grad-text">business deserves</span></h2>
     <p class="t-largecopy" style="color:var(--text-secondary);margin-bottom:48px;max-width:480px;margin-left:auto;margin-right:auto;">Tell us about your business and we'll get back to you within 24 hours with a clear proposal.</p>
 
     <form style="display:flex;flex-direction:column;gap:14px;max-width:500px;margin:0 auto 32px;" onsubmit="return false;">
@@ -1338,6 +1173,83 @@
     </div>
   </div>
 </section>
+
+<!-- ═══════════════════════════════════════
+     FAQ
+═══════════════════════════════════════ -->
+<section id="faq" style="padding:120px 24px;max-width:800px;margin:0 auto;">
+  <div style="text-align:center;margin-bottom:64px;">
+    <div class="tag" style="margin-bottom:20px;display:inline-block;">FAQ</div>
+    <h2 class="t-hero">Common questions</h2>
+  </div>
+  <div style="display:flex;flex-direction:column;gap:0;">
+
+    <div class="faq-item" style="border-top:1px solid rgba(255,255,255,0.06);padding:24px 0;">
+      <button onclick="toggleFaq(this)" style="width:100%;display:flex;justify-content:space-between;align-items:center;background:none;border:none;color:#fff;cursor:pointer;text-align:left;gap:16px;">
+        <span style="font-size:17px;font-weight:600;letter-spacing:-0.01em;">How long does it take to build my website?</span>
+        <span class="faq-icon" style="font-size:20px;color:var(--blue-bright);flex-shrink:0;transition:transform 0.2s ease;">+</span>
+      </button>
+      <div class="faq-answer" style="display:none;padding-top:14px;">
+        <p style="font-size:15px;color:var(--text-secondary);line-height:1.7;">Most websites are designed and built within 2–4 weeks. You'll see your first design within 48 hours of getting started, and we work quickly from there.</p>
+      </div>
+    </div>
+
+    <div class="faq-item" style="border-top:1px solid rgba(255,255,255,0.06);padding:24px 0;">
+      <button onclick="toggleFaq(this)" style="width:100%;display:flex;justify-content:space-between;align-items:center;background:none;border:none;color:#fff;cursor:pointer;text-align:left;gap:16px;">
+        <span style="font-size:17px;font-weight:600;letter-spacing:-0.01em;">How much does a website cost?</span>
+        <span class="faq-icon" style="font-size:20px;color:var(--blue-bright);flex-shrink:0;transition:transform 0.2s ease;">+</span>
+      </button>
+      <div class="faq-answer" style="display:none;padding-top:14px;">
+        <p style="font-size:15px;color:var(--text-secondary);line-height:1.7;">We offer two straightforward plans — Starter at €199/month (up to 1 page, free domain &amp; hosting, 30-day support) and Growth at €499/month (up to 5 pages, custom design, Google reviews integration, and 90-day support). No hourly billing, no hidden fees — just a fixed monthly price for everything.</p>
+      </div>
+    </div>
+
+    <div class="faq-item" style="border-top:1px solid rgba(255,255,255,0.06);padding:24px 0;">
+      <button onclick="toggleFaq(this)" style="width:100%;display:flex;justify-content:space-between;align-items:center;background:none;border:none;color:#fff;cursor:pointer;text-align:left;gap:16px;">
+        <span style="font-size:17px;font-weight:600;letter-spacing:-0.01em;">Do I need to know anything technical?</span>
+        <span class="faq-icon" style="font-size:20px;color:var(--blue-bright);flex-shrink:0;transition:transform 0.2s ease;">+</span>
+      </button>
+      <div class="faq-answer" style="display:none;padding-top:14px;">
+        <p style="font-size:15px;color:var(--text-secondary);line-height:1.7;">Not at all. We handle everything — design, development, and launch. All you need to do is tell us about your business and approve the design.</p>
+      </div>
+    </div>
+
+    <div class="faq-item" style="border-top:1px solid rgba(255,255,255,0.06);padding:24px 0;">
+      <button onclick="toggleFaq(this)" style="width:100%;display:flex;justify-content:space-between;align-items:center;background:none;border:none;color:#fff;cursor:pointer;text-align:left;gap:16px;">
+        <span style="font-size:17px;font-weight:600;letter-spacing:-0.01em;">Can I make changes after the website is live?</span>
+        <span class="faq-icon" style="font-size:20px;color:var(--blue-bright);flex-shrink:0;transition:transform 0.2s ease;">+</span>
+      </button>
+      <div class="faq-answer" style="display:none;padding-top:14px;">
+        <p style="font-size:15px;color:var(--text-secondary);line-height:1.7;">Yes. After launch, both plans include a free revision period — 30 days on the Starter plan (€199/month) and 90 days on the Growth plan (€499/month). During that time you can request any changes and we'll take care of them at no extra cost.</p>
+      </div>
+    </div>
+
+    <div class="faq-item" style="border-top:1px solid rgba(255,255,255,0.06);border-bottom:1px solid rgba(255,255,255,0.06);padding:24px 0;">
+      <button onclick="toggleFaq(this)" style="width:100%;display:flex;justify-content:space-between;align-items:center;background:none;border:none;color:#fff;cursor:pointer;text-align:left;gap:16px;">
+        <span style="font-size:17px;font-weight:600;letter-spacing:-0.01em;">Will my website show up on Google?</span>
+        <span class="faq-icon" style="font-size:20px;color:var(--blue-bright);flex-shrink:0;transition:transform 0.2s ease;">+</span>
+      </button>
+      <div class="faq-answer" style="display:none;padding-top:14px;">
+        <p style="font-size:15px;color:var(--text-secondary);line-height:1.7;">Every website we build is fully optimised for search engines from day one — so you have the best possible chance of being found by your customers.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+<script>
+function toggleFaq(btn) {
+  const answer = btn.nextElementSibling;
+  const icon = btn.querySelector('.faq-icon');
+  const isOpen = answer.style.display === 'block';
+  document.querySelectorAll('.faq-answer').forEach(a => a.style.display = 'none');
+  document.querySelectorAll('.faq-icon').forEach(i => { i.textContent = '+'; i.style.transform = 'rotate(0deg)'; });
+  if (!isOpen) {
+    answer.style.display = 'block';
+    icon.textContent = '×';
+    icon.style.transform = 'rotate(90deg)';
+  }
+}
+</script>
 
 <!-- ═══════════════════════════════════════
      FOOTER
@@ -1382,7 +1294,7 @@
     </div>
     <div class="divider"></div>
     <div style="display:flex;align-items:center;justify-content:space-between;padding-top:24px;flex-wrap:wrap;gap:12px;">
-      <div style="font-size:13px;color:var(--text-muted);">© 2026 Web Giants. All rights reserved.</div>
+      <div style="font-size:13px;color:var(--text-muted);">© Made by WebGiants</div>
       <div style="display:flex;gap:20px;">
         <a href="#" style="font-size:13px;color:var(--text-muted);text-decoration:none;">Privacy</a>
         <a href="#" style="font-size:13px;color:var(--text-muted);text-decoration:none;">Terms</a>
@@ -1411,7 +1323,7 @@
 <script>
   // Scroll spy — highlight active nav link based on visible section
   const navLinks = document.querySelectorAll('a.nav-link[href^="#"]');
-  const sectionIds = ['services', 'process', 'results', 'pricing', 'contact'];
+  const sectionIds = ['process', 'results', 'pricing', 'contact', 'faq'];
 
   function setActive(id) {
     navLinks.forEach(link => {
