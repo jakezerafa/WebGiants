@@ -289,6 +289,37 @@
       background: linear-gradient(90deg, var(--blue), var(--blue-bright));
       transition: width 1s ease;
     }
+
+    /* ── Mobile ── */
+    @media (max-width: 640px) {
+      .hidden-mobile { display: none !important; }
+      nav { padding: 0 16px; }
+
+      /* Hero mockups */
+      .hero-vis { height: 260px !important; margin-top: 32px !important; }
+      .hero-side { display: none !important; }
+      .hero-front { width: 88% !important; }
+      .hero-badge { display: none !important; }
+
+      /* Before/after sliders */
+      .compare-wrap { height: 220px !important; }
+
+      /* Testimonials */
+      .testimonials-grid { grid-template-columns: 1fr !important; }
+
+      /* Pricing */
+      .pricing-grid { grid-template-columns: 1fr !important; max-width: 100% !important; }
+
+      /* Footer */
+      .footer-grid { grid-template-columns: 1fr 1fr !important; gap: 28px !important; }
+
+      /* Contact form */
+      .form-row { grid-template-columns: 1fr !important; }
+
+      /* Section spacing */
+      .mob-section { padding: 60px 16px !important; }
+      .mob-mb { margin-bottom: 40px !important; }
+    }
   </style>
 </head>
 <body>
@@ -347,12 +378,12 @@
 
 
   <!-- Hero: Overlapping browser mockups -->
-  <div class="animate-fadeinup delay-4" style="margin-top:72px;width:100%;max-width:1100px;position:relative;height:520px;">
+  <div class="animate-fadeinup delay-4 hero-vis" style="margin-top:72px;width:100%;max-width:1100px;position:relative;height:520px;">
     <!-- Glow under -->
     <div style="position:absolute;bottom:-40px;left:50%;transform:translateX(-50%);width:70%;height:80px;background:radial-gradient(ellipse,rgba(30,111,255,0.25) 0%,transparent 70%);filter:blur(20px);pointer-events:none;"></div>
 
     <!-- Back left: E-commerce site -->
-    <div class="app-window" style="position:absolute;width:68%;left:0%;top:48px;transform:rotate(-5deg);transform-origin:bottom center;opacity:0.65;box-shadow:0 40px 120px rgba(0,0,0,0.6);">
+    <div class="app-window hero-side" style="position:absolute;width:68%;left:0%;top:48px;transform:rotate(-5deg);transform-origin:bottom center;opacity:0.65;box-shadow:0 40px 120px rgba(0,0,0,0.6);">
       <div class="window-chrome">
         <div class="dot" style="background:#FF5F57;"></div>
         <div class="dot" style="background:#FEBC2E;"></div>
@@ -389,7 +420,7 @@
     </div>
 
     <!-- Back right: SaaS site -->
-    <div class="app-window" style="position:absolute;width:68%;right:0%;top:48px;transform:rotate(5deg);transform-origin:bottom center;opacity:0.65;box-shadow:0 40px 120px rgba(0,0,0,0.6);">
+    <div class="app-window hero-side" style="position:absolute;width:68%;right:0%;top:48px;transform:rotate(5deg);transform-origin:bottom center;opacity:0.65;box-shadow:0 40px 120px rgba(0,0,0,0.6);">
       <div class="window-chrome">
         <div class="dot" style="background:#FF5F57;"></div>
         <div class="dot" style="background:#FEBC2E;"></div>
@@ -429,7 +460,7 @@
     </div>
 
     <!-- Front center: beautiful landing page (main) -->
-    <div class="app-window animate-float" style="position:absolute;width:62%;left:50%;transform:translateX(-50%);top:0;z-index:10;box-shadow:0 60px 140px rgba(0,0,0,0.8),0 0 0 1px rgba(255,255,255,0.08);">
+    <div class="app-window animate-float hero-front" style="position:absolute;width:62%;left:50%;transform:translateX(-50%);top:0;z-index:10;box-shadow:0 60px 140px rgba(0,0,0,0.8),0 0 0 1px rgba(255,255,255,0.08);">
       <div class="window-chrome">
         <div class="dot" style="background:#FF5F57;"></div>
         <div class="dot" style="background:#FEBC2E;"></div>
@@ -488,19 +519,19 @@
     </div>
 
     <!-- Floating metric badges -->
-    <div style="position:absolute;top:16px;left:2%;background:rgba(8,8,8,0.92);border:1px solid rgba(74,222,128,0.3);border-radius:12px;padding:10px 14px;backdrop-filter:blur(12px);z-index:20;box-shadow:0 8px 32px rgba(0,0,0,0.5);">
+    <div class="hero-badge" style="position:absolute;top:16px;left:2%;background:rgba(8,8,8,0.92);border:1px solid rgba(74,222,128,0.3);border-radius:12px;padding:10px 14px;backdrop-filter:blur(12px);z-index:20;box-shadow:0 8px 32px rgba(0,0,0,0.5);">
       <div style="font-size:11px;color:rgba(255,255,255,0.45);margin-bottom:3px;letter-spacing:0.04em;">Conversion rate</div>
       <div style="font-size:20px;font-weight:700;color:#4ADE80;letter-spacing:-0.03em;">+340%</div>
     </div>
-    <div style="position:absolute;bottom:20px;left:3%;background:rgba(8,8,8,0.92);border:1px solid rgba(30,111,255,0.3);border-radius:12px;padding:10px 14px;backdrop-filter:blur(12px);z-index:20;box-shadow:0 8px 32px rgba(0,0,0,0.5);">
+    <div class="hero-badge" style="position:absolute;bottom:20px;left:3%;background:rgba(8,8,8,0.92);border:1px solid rgba(30,111,255,0.3);border-radius:12px;padding:10px 14px;backdrop-filter:blur(12px);z-index:20;box-shadow:0 8px 32px rgba(0,0,0,0.5);">
       <div style="font-size:11px;color:rgba(255,255,255,0.45);margin-bottom:3px;letter-spacing:0.04em;">Performance</div>
       <div style="font-size:20px;font-weight:700;color:#4D91FF;letter-spacing:-0.03em;">100 / 100</div>
     </div>
-    <div style="position:absolute;top:16px;right:2%;background:rgba(8,8,8,0.92);border:1px solid rgba(254,188,46,0.3);border-radius:12px;padding:10px 14px;backdrop-filter:blur(12px);z-index:20;box-shadow:0 8px 32px rgba(0,0,0,0.5);">
+    <div class="hero-badge" style="position:absolute;top:16px;right:2%;background:rgba(8,8,8,0.92);border:1px solid rgba(254,188,46,0.3);border-radius:12px;padding:10px 14px;backdrop-filter:blur(12px);z-index:20;box-shadow:0 8px 32px rgba(0,0,0,0.5);">
       <div style="font-size:11px;color:rgba(255,255,255,0.45);margin-bottom:3px;letter-spacing:0.04em;">Delivered in</div>
       <div style="font-size:20px;font-weight:700;color:#FEBC2E;letter-spacing:-0.03em;">48 hours</div>
     </div>
-    <div style="position:absolute;bottom:20px;right:3%;background:rgba(8,8,8,0.92);border:1px solid rgba(192,132,252,0.3);border-radius:12px;padding:10px 14px;backdrop-filter:blur(12px);z-index:20;box-shadow:0 8px 32px rgba(0,0,0,0.5);">
+    <div class="hero-badge" style="position:absolute;bottom:20px;right:3%;background:rgba(8,8,8,0.92);border:1px solid rgba(192,132,252,0.3);border-radius:12px;padding:10px 14px;backdrop-filter:blur(12px);z-index:20;box-shadow:0 8px 32px rgba(0,0,0,0.5);">
       <div style="font-size:11px;color:rgba(255,255,255,0.45);margin-bottom:3px;letter-spacing:0.04em;">SEO score</div>
       <div style="font-size:20px;font-weight:700;color:#C084FC;letter-spacing:-0.03em;">100 / 100</div>
     </div>
@@ -512,7 +543,7 @@
 <!-- ═══════════════════════════════════════
      RESULTS SECTION
 ═══════════════════════════════════════ -->
-<section id="results" style="padding:100px 24px;border-top:1px solid rgba(255,255,255,0.06);background:var(--surface);position:relative;overflow:hidden;">
+<section id="results" class="mob-section" style="padding:100px 24px;border-top:1px solid rgba(255,255,255,0.06);background:var(--surface);position:relative;overflow:hidden;">
 
   <!-- Background glow -->
   <div style="position:absolute;top:0;left:50%;transform:translateX(-50%);width:900px;height:500px;background:radial-gradient(ellipse at 50% 0%,rgba(30,111,255,0.10) 0%,transparent 70%);pointer-events:none;"></div>
@@ -536,20 +567,6 @@
             <div class="t-label" style="color:var(--blue-bright);margin-bottom:8px;">01</div>
             <h3 class="t-title" style="margin-bottom:8px;">Iron Peak Gym</h3>
             <p style="color:var(--text-muted);font-size:15px;">Independent fitness gym — memberships &amp; personal training</p>
-          </div>
-          <div style="display:flex;gap:24px;flex-wrap:wrap;">
-            <div style="text-align:center;padding:16px 24px;background:rgba(30,111,255,0.08);border:1px solid rgba(30,111,255,0.2);border-radius:12px;">
-              <div style="font-size:28px;font-weight:800;color:#4D91FF;letter-spacing:-0.03em;">+274%</div>
-              <div style="font-size:12px;color:var(--text-muted);margin-top:4px;text-transform:uppercase;letter-spacing:0.06em;">Trial Sign-ups</div>
-            </div>
-            <div style="text-align:center;padding:16px 24px;background:rgba(40,200,64,0.07);border:1px solid rgba(40,200,64,0.18);border-radius:12px;">
-              <div style="font-size:28px;font-weight:800;color:#28C840;letter-spacing:-0.03em;">-71%</div>
-              <div style="font-size:12px;color:var(--text-muted);margin-top:4px;text-transform:uppercase;letter-spacing:0.06em;">Bounce Rate</div>
-            </div>
-            <div style="text-align:center;padding:16px 24px;background:rgba(255,196,0,0.07);border:1px solid rgba(255,196,0,0.18);border-radius:12px;">
-              <div style="font-size:28px;font-weight:800;color:#FFC400;letter-spacing:-0.03em;">1.1s</div>
-              <div style="font-size:12px;color:var(--text-muted);margin-top:4px;text-transform:uppercase;letter-spacing:0.06em;">Load Time</div>
-            </div>
           </div>
         </div>
 
@@ -685,20 +702,6 @@
             <h3 class="t-title" style="margin-bottom:8px;">Luminary Studio</h3>
             <p style="color:var(--text-muted);font-size:15px;">Boutique photography &amp; creative agency</p>
           </div>
-          <div style="display:flex;gap:24px;flex-wrap:wrap;">
-            <div style="text-align:center;padding:16px 24px;background:rgba(30,111,255,0.08);border:1px solid rgba(30,111,255,0.2);border-radius:12px;">
-              <div style="font-size:28px;font-weight:800;color:#4D91FF;letter-spacing:-0.03em;">+189%</div>
-              <div style="font-size:12px;color:var(--text-muted);margin-top:4px;text-transform:uppercase;letter-spacing:0.06em;">Booking Rate</div>
-            </div>
-            <div style="text-align:center;padding:16px 24px;background:rgba(40,200,64,0.07);border:1px solid rgba(40,200,64,0.18);border-radius:12px;">
-              <div style="font-size:28px;font-weight:800;color:#28C840;letter-spacing:-0.03em;">4.2min</div>
-              <div style="font-size:12px;color:var(--text-muted);margin-top:4px;text-transform:uppercase;letter-spacing:0.06em;">Avg Session</div>
-            </div>
-            <div style="text-align:center;padding:16px 24px;background:rgba(255,196,0,0.07);border:1px solid rgba(255,196,0,0.18);border-radius:12px;">
-              <div style="font-size:28px;font-weight:800;color:#FFC400;letter-spacing:-0.03em;">98</div>
-              <div style="font-size:12px;color:var(--text-muted);margin-top:4px;text-transform:uppercase;letter-spacing:0.06em;">PageSpeed Score</div>
-            </div>
-          </div>
         </div>
 
         <div class="compare-wrap" style="position:relative;border-radius:16px;overflow:hidden;border:1px solid rgba(255,255,255,0.08);box-shadow:0 24px 80px rgba(0,0,0,0.6),0 0 0 1px rgba(201,169,110,0.12);cursor:col-resize;user-select:none;">
@@ -795,20 +798,6 @@
             <div class="t-label" style="color:var(--blue-bright);margin-bottom:8px;">03</div>
             <h3 class="t-title" style="margin-bottom:8px;">NovaMed Clinic</h3>
             <p style="color:var(--text-muted);font-size:15px;">Medical aesthetics &amp; wellness center</p>
-          </div>
-          <div style="display:flex;gap:24px;flex-wrap:wrap;">
-            <div style="text-align:center;padding:16px 24px;background:rgba(30,111,255,0.08);border:1px solid rgba(30,111,255,0.2);border-radius:12px;">
-              <div style="font-size:28px;font-weight:800;color:#4D91FF;letter-spacing:-0.03em;">+247%</div>
-              <div style="font-size:12px;color:var(--text-muted);margin-top:4px;text-transform:uppercase;letter-spacing:0.06em;">Appointments</div>
-            </div>
-            <div style="text-align:center;padding:16px 24px;background:rgba(40,200,64,0.07);border:1px solid rgba(40,200,64,0.18);border-radius:12px;">
-              <div style="font-size:28px;font-weight:800;color:#28C840;letter-spacing:-0.03em;">3.8×</div>
-              <div style="font-size:12px;color:var(--text-muted);margin-top:4px;text-transform:uppercase;letter-spacing:0.06em;">Ad ROI</div>
-            </div>
-            <div style="text-align:center;padding:16px 24px;background:rgba(255,196,0,0.07);border:1px solid rgba(255,196,0,0.18);border-radius:12px;">
-              <div style="font-size:28px;font-weight:800;color:#FFC400;letter-spacing:-0.03em;">1.2s</div>
-              <div style="font-size:12px;color:var(--text-muted);margin-top:4px;text-transform:uppercase;letter-spacing:0.06em;">Load Time</div>
-            </div>
           </div>
         </div>
 
@@ -950,7 +939,7 @@
         <div class="tag" style="margin-bottom:20px;">Testimonials</div>
         <h2 class="t-hero">What clients say</h2>
       </div>
-      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;">
+      <div class="testimonials-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;">
         <div class="feature-card" style="padding:28px;">
           <div style="margin-bottom:20px;">
             <div style="display:flex;gap:3px;margin-bottom:16px;">
@@ -1005,7 +994,7 @@
 <!-- ═══════════════════════════════════════
      PROCESS SECTION
 ═══════════════════════════════════════ -->
-<section id="process" style="padding:100px 24px;border-top:1px solid rgba(255,255,255,0.06);position:relative;overflow:hidden;">
+<section id="process" class="mob-section" style="padding:100px 24px;border-top:1px solid rgba(255,255,255,0.06);position:relative;overflow:hidden;">
 
   <div style="position:absolute;top:0;left:50%;transform:translateX(-50%);width:600px;height:600px;background:radial-gradient(circle at 50% 30%,rgba(30,111,255,0.07),transparent 70%);pointer-events:none;"></div>
 
@@ -1032,7 +1021,7 @@
         </div>
         <div style="padding-top:4px;">
           <h3 style="font-size:22px;font-weight:700;letter-spacing:-0.02em;margin-bottom:10px;">Discovery & Strategy</h3>
-          <p style="font-size:15px;color:var(--text-muted);line-height:1.65;">We take time to understand your business, your audience, and what success looks like for you before a single pixel is touched.</p>
+          <p style="font-size:15px;color:var(--text-muted);line-height:1.65;">We take the time to understand your business, your audience, and your goals before we start designing.</p>
         </div>
       </div>
 
@@ -1074,7 +1063,7 @@
     <h2 class="t-hero" style="margin-bottom:16px;">Choose a plan that<br/><span class="grad-text">works for you</span></h2>
       </div>
 
-  <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:20px;max-width:740px;margin:0 auto;">
+  <div class="pricing-grid" style="display:grid;grid-template-columns:repeat(2,1fr);gap:20px;max-width:740px;margin:0 auto;">
     <!-- Starter -->
     <div class="feature-card" style="padding:32px;">
       <div style="font-size:13px;font-weight:600;color:var(--text-muted);letter-spacing:0.06em;text-transform:uppercase;margin-bottom:16px;">Starter</div>
@@ -1138,20 +1127,45 @@
     range.addEventListener('input', () => setPosition(parseFloat(range.value)));
     window.addEventListener('resize', () => setPosition(parseFloat(range.value)));
   });
+
+  // Animate first slider on scroll into view
+  (function() {
+    const wrap = document.querySelector('.compare-wrap');
+    if (!wrap) return;
+    function animateSlider() {
+      const range = wrap.querySelector('.compare-range');
+      if (!range) return;
+      const duration = 3600;
+      const start = performance.now();
+      function step(now) {
+        const t = Math.min((now - start) / duration, 1);
+        // Sine wave × envelope: starts and ends at 50, drifts right then left
+        const pct = 50 + 13 * Math.sin(t * Math.PI) * Math.sin(t * 2 * Math.PI);
+        range.value = pct;
+        range.dispatchEvent(new Event('input'));
+        if (t < 1) requestAnimationFrame(step);
+      }
+      setTimeout(() => requestAnimationFrame(step), 400);
+    }
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { animateSlider(); obs.unobserve(e.target); } });
+    }, { threshold: 0.35 });
+    obs.observe(wrap);
+  })();
 </script>
 
 <!-- ═══════════════════════════════════════
      CTA SECTION
 ═══════════════════════════════════════ -->
-<section id="contact" style="padding:100px 24px;position:relative;overflow:hidden;border-top:1px solid rgba(255,255,255,0.06);">
+<section id="contact" class="mob-section" style="padding:100px 24px;position:relative;overflow:hidden;border-top:1px solid rgba(255,255,255,0.06);">
   <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:800px;height:400px;background:radial-gradient(ellipse,rgba(30,111,255,0.18) 0%,transparent 70%);pointer-events:none;"></div>
   <div style="max-width:700px;margin:0 auto;text-align:center;position:relative;">
-    <div class="tag" style="margin-bottom:24px;">Ready to start?</div>
+    <div class="tag" style="margin-bottom:24px;color:#4ADE80;border-color:rgba(74,222,128,0.3);background:rgba(74,222,128,0.08);">Ready to start?</div>
     <h2 class="t-hero" style="margin-bottom:20px;">The website your<br/><span class="grad-text">business deserves</span></h2>
     <p class="t-largecopy" style="color:var(--text-secondary);margin-bottom:48px;max-width:480px;margin-left:auto;margin-right:auto;">Tell us about your business and we'll get back to you within 24 hours with a clear proposal.</p>
 
     <form style="display:flex;flex-direction:column;gap:14px;max-width:500px;margin:0 auto 32px;" onsubmit="return false;">
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+      <div class="form-row" style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
         <input type="text" placeholder="Your name" style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:14px 16px;font-size:15px;color:#fff;font-family:inherit;outline:none;transition:border-color 0.2s ease;" onfocus="this.style.borderColor='rgba(30,111,255,0.5)'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'" />
         <input type="email" placeholder="Email address" style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:14px 16px;font-size:15px;color:#fff;font-family:inherit;outline:none;transition:border-color 0.2s ease;" onfocus="this.style.borderColor='rgba(30,111,255,0.5)'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'" />
       </div>
@@ -1177,7 +1191,7 @@
 <!-- ═══════════════════════════════════════
      FAQ
 ═══════════════════════════════════════ -->
-<section id="faq" style="padding:120px 24px;max-width:800px;margin:0 auto;">
+<section id="faq" class="mob-section" style="padding:120px 24px;max-width:800px;margin:0 auto;">
   <div style="text-align:center;margin-bottom:64px;">
     <div class="tag" style="margin-bottom:20px;display:inline-block;">FAQ</div>
     <h2 class="t-hero">Common questions</h2>
@@ -1256,7 +1270,7 @@ function toggleFaq(btn) {
 ═══════════════════════════════════════ -->
 <footer style="padding:48px 24px;border-top:1px solid rgba(255,255,255,0.06);">
   <div style="max-width:1200px;margin:0 auto;">
-    <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px;">
+    <div class="footer-grid" style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px;">
       <div>
         <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px;">
           <img src="brand assets/ChatGPT Image Mar 7, 2026, 10_42_19 AM.png" alt="Web Giants" style="width:40px;height:40px;border-radius:50%;" />
