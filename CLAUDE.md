@@ -46,6 +46,97 @@
 - **Spacing:** Use intentional, consistent spacing tokens — not random Tailwind steps.
 - **Depth:** Surfaces should have a layering system (base → elevated → floating), not all sit at the same z-plane.
 
+## Reusable Components
+
+### Google Reviews Integration
+When the user asks to "insert the Google reviews integration", add this section to the page. Place it after the testimonials section (or wherever the user specifies).
+
+**How it works:**
+- User taps 1–3 stars → internal feedback form appears ("How can we improve our service?" + textarea + submit)
+- User taps 4–5 stars → redirected to Google review page (opens in new tab)
+- After submitting low-rating feedback → thank you confirmation shown
+
+**Insert this HTML block:**
+```html
+<!-- GOOGLE REVIEWS SECTION -->
+<section style="padding:100px 24px;border-top:1px solid rgba(255,255,255,0.06);position:relative;overflow:hidden;">
+  <div style="position:absolute;top:0;left:50%;transform:translateX(-50%);width:700px;height:400px;background:radial-gradient(ellipse at 50% 0%,rgba(30,111,255,0.08) 0%,transparent 70%);pointer-events:none;"></div>
+  <div style="max-width:560px;margin:0 auto;text-align:center;position:relative;">
+    <div style="display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:20px;">
+      <svg width="28" height="28" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+        <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
+        <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/>
+        <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/>
+        <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.18 1.48-4.97 2.31-8.16 2.31-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>
+      </svg>
+      <span style="font-size:15px;font-weight:600;color:rgba(255,255,255,0.5);letter-spacing:0.02em;">Reviews</span>
+    </div>
+    <h2 class="t-title" style="margin-bottom:12px;">How did we do?</h2>
+    <p style="font-size:15px;color:var(--text-secondary);margin-bottom:40px;">Your feedback helps us grow. Tap a star to rate your experience.</p>
+    <div id="gr-stars" style="display:flex;justify-content:center;gap:12px;margin-bottom:40px;">
+      <button onclick="grRate(1)" onmouseenter="grHover(1)" onmouseleave="grHoverOut()" class="gr-star" aria-label="1 star">★</button>
+      <button onclick="grRate(2)" onmouseenter="grHover(2)" onmouseleave="grHoverOut()" class="gr-star" aria-label="2 stars">★</button>
+      <button onclick="grRate(3)" onmouseenter="grHover(3)" onmouseleave="grHoverOut()" class="gr-star" aria-label="3 stars">★</button>
+      <button onclick="grRate(4)" onmouseenter="grHover(4)" onmouseleave="grHoverOut()" class="gr-star" aria-label="4 stars">★</button>
+      <button onclick="grRate(5)" onmouseenter="grHover(5)" onmouseleave="grHoverOut()" class="gr-star" aria-label="5 stars">★</button>
+    </div>
+    <div id="gr-feedback" style="display:none;animation:fadeInUp 0.4s cubic-bezier(.16,1,.3,1) both;">
+      <div style="background:var(--elevated);border:1px solid var(--border);border-radius:16px;padding:32px;text-align:left;">
+        <p style="font-size:15px;font-weight:600;color:#fff;margin-bottom:6px;">How can we improve our service?</p>
+        <p style="font-size:13px;color:var(--text-muted);margin-bottom:20px;">We read every response and take action.</p>
+        <textarea id="gr-text" rows="4" placeholder="Tell us what we could do better…" style="width:100%;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:14px;font-size:14px;color:#fff;font-family:inherit;resize:vertical;outline:none;transition:border-color 0.2s ease;" onfocus="this.style.borderColor='rgba(30,111,255,0.5)'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'"></textarea>
+        <button onclick="grSubmitFeedback()" class="btn-primary" style="margin-top:16px;width:100%;justify-content:center;">Send feedback</button>
+      </div>
+    </div>
+    <div id="gr-thanks" style="display:none;animation:fadeInUp 0.4s cubic-bezier(.16,1,.3,1) both;">
+      <div style="background:var(--elevated);border:1px solid rgba(52,168,83,0.3);border-radius:16px;padding:32px;">
+        <div style="font-size:32px;margin-bottom:12px;">✓</div>
+        <p style="font-size:16px;font-weight:600;color:#34A853;margin-bottom:6px;">Thank you for your feedback!</p>
+        <p style="font-size:14px;color:var(--text-muted);">We'll use it to keep improving our service.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .gr-star { font-size:40px;color:rgba(255,255,255,0.15);background:none;border:none;cursor:pointer;padding:4px;line-height:1;transition:color 0.15s ease,transform 0.15s cubic-bezier(.34,1.56,.64,1); }
+  .gr-star.active { color:#FBBC04; }
+  .gr-star:focus-visible { outline:2px solid #FBBC04;border-radius:4px; }
+</style>
+
+<script>
+  let grSelected = 0;
+  const grStars = () => document.querySelectorAll('.gr-star');
+  function grHighlight(n) { grStars().forEach((s,i) => s.classList.toggle('active', i < n)); }
+  function grHover(n) { grHighlight(n); }
+  function grHoverOut() { grHighlight(grSelected); }
+  function grRate(n) {
+    grSelected = n;
+    grHighlight(n);
+    document.getElementById('gr-feedback').style.display = 'none';
+    document.getElementById('gr-thanks').style.display = 'none';
+    if (n >= 4) {
+      setTimeout(() => window.open('GOOGLE_REVIEW_URL_HERE', '_blank'), 300);
+    } else {
+      setTimeout(() => { document.getElementById('gr-feedback').style.display = 'block'; }, 200);
+    }
+  }
+  function grSubmitFeedback() {
+    const text = document.getElementById('gr-text').value.trim();
+    if (!text) return;
+    document.getElementById('gr-feedback').style.display = 'none';
+    document.getElementById('gr-thanks').style.display = 'block';
+    // TODO: send `text` and `grSelected` to backend / form handler
+  }
+</script>
+```
+
+**Before inserting:** ask the user for their Google review link (format: `https://search.google.com/local/writereview?placeid=PLACE_ID`) and replace `GOOGLE_REVIEW_URL_HERE`. If they don't have it yet, insert the placeholder and leave a comment.
+
+**Styling notes:** The component uses CSS variables (`--elevated`, `--border`, `--text-secondary`, `--text-muted`, `btn-primary`) from the WebGiants design system. For other sites, map these to the site's equivalent variables or replace with hardcoded values. Star color is Google yellow `#FBBC04`. Success state uses Google green `#34A853`.
+
+---
+
 ## Hard Rules
 - Do not add sections, features, or content not in the reference
 - Do not "improve" a reference design — match it
