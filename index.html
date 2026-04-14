@@ -359,14 +359,11 @@
       /* Burger button */
       .burger-btn { display: flex !important; }
 
-      /* Mobile nav menu */
-      #mobile-menu { display: none; }
-      #mobile-menu.open { display: flex !important; }
     }
 
-    /* Burger button hidden by default (desktop) */
+    /* Burger button always visible */
     .burger-btn {
-      display: none;
+      display: flex;
       flex-direction: column;
       justify-content: center;
       gap: 5px;
@@ -391,9 +388,44 @@
     .burger-btn.open span:nth-child(2) { opacity: 0; }
     .burger-btn.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-    /* Mobile dropdown menu */
+    /* Nav dropdown menu */
+    @keyframes menuSlideDown {
+      from { opacity: 0; transform: translateY(-10px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes menuSlideUp {
+      from { opacity: 1; transform: translateY(0); }
+      to   { opacity: 0; transform: translateY(-10px); }
+    }
+    #mobile-menu.closing {
+      display: flex !important;
+      animation: menuSlideUp 0.15s cubic-bezier(.16,1,.3,1) both;
+    }
+    #mobile-menu.closing a {
+      opacity: 0;
+      transform: translateX(-8px);
+      transition: opacity 0.1s ease, transform 0.1s ease;
+    }
+    #mobile-menu { display: none; }
+    #mobile-menu.open {
+      display: flex !important;
+      animation: menuSlideDown 0.25s cubic-bezier(.16,1,.3,1) both;
+    }
+    #mobile-menu a {
+      opacity: 0;
+      transform: translateX(-8px);
+      transition: opacity 0s, transform 0s;
+    }
+    #mobile-menu.open a {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    #mobile-menu.open a:nth-child(1) { transition: opacity 0.2s 0.05s ease, transform 0.2s 0.05s cubic-bezier(.16,1,.3,1); }
+    #mobile-menu.open a:nth-child(2) { transition: opacity 0.2s 0.1s ease, transform 0.2s 0.1s cubic-bezier(.16,1,.3,1); }
+    #mobile-menu.open a:nth-child(3) { transition: opacity 0.2s 0.15s ease, transform 0.2s 0.15s cubic-bezier(.16,1,.3,1); }
+    #mobile-menu.open a:nth-child(4) { transition: opacity 0.2s 0.2s ease, transform 0.2s 0.2s cubic-bezier(.16,1,.3,1); }
+    #mobile-menu.open a:nth-child(5) { transition: opacity 0.2s 0.25s ease, transform 0.2s 0.25s cubic-bezier(.16,1,.3,1); }
     #mobile-menu {
-      display: none;
       position: fixed;
       top: 60px;
       left: 0; right: 0;
@@ -429,17 +461,17 @@
     <span style="font-family:'Rajdhani',sans-serif;font-size:18px;font-weight:700;color:#fff;letter-spacing:0.12em;text-transform:uppercase;">Web Giants</span>
   </a>
 
-  <div style="display:flex;align-items:center;gap:4px;" class="hidden-mobile">
+  <div style="display:none;" class="hidden-mobile">
     <a href="#" class="nav-link">Home</a>
     <a href="#results" class="nav-link">Results</a>
     <a href="#process" class="nav-link">Process</a>
+    <a href="#testimonials" class="nav-link">Testimonials</a>
     <a href="#pricing" class="nav-link">Pricing</a>
     <a href="#contact" class="nav-link">Contact</a>
-    <a href="rate-us.html" class="nav-link">Testimonials</a>
   </div>
 
   <div style="display:flex;align-items:center;gap:10px;">
-    <a href="#contact" class="btn-primary" style="padding:8px 18px;font-size:14px;">Get started →</a>
+    <a href="#contact" class="btn-primary" style="padding:8px 18px;font-size:14px;">Get started</a>
     <button class="burger-btn" id="burger-btn" aria-label="Open menu" onclick="toggleMobileMenu()">
       <span></span><span></span><span></span>
     </button>
@@ -447,32 +479,87 @@
 </nav>
 
 <div id="mobile-menu">
-  <a href="#" onclick="closeMobileMenu()">Home</a>
-  <a href="#results" onclick="closeMobileMenu()">Results</a>
-  <a href="#process" onclick="closeMobileMenu()">Process</a>
-  <a href="#pricing" onclick="closeMobileMenu()">Pricing</a>
-  <a href="#contact" onclick="closeMobileMenu()">Contact</a>
-  <a href="rate-us.html" onclick="closeMobileMenu()">Testimonials</a>
+  <a href="#" onclick="navTo(event,'#')">Home</a>
+  <a href="#results" onclick="navTo(event,'#results')">Results</a>
+  <a href="#process" onclick="navTo(event,'#process')">Process</a>
+  <a href="#pricing" onclick="navTo(event,'#pricing')">Pricing</a>
+  <a href="#contact" onclick="navTo(event,'#contact')">Contact</a>
 </div>
 
 <script>
+  function closeMenuAnimated() {
+    const menu = document.getElementById('mobile-menu');
+    const btn = document.getElementById('burger-btn');
+    menu.classList.remove('open');
+    menu.classList.add('closing');
+    btn.classList.remove('open');
+    btn.setAttribute('aria-label', 'Open menu');
+    setTimeout(() => menu.classList.remove('closing'), 150);
+  }
   function toggleMobileMenu() {
     const menu = document.getElementById('mobile-menu');
     const btn = document.getElementById('burger-btn');
-    const isOpen = menu.classList.toggle('open');
-    btn.classList.toggle('open', isOpen);
-    btn.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
+    if (menu.classList.contains('open')) {
+      closeMenuAnimated();
+    } else {
+      menu.classList.remove('closing');
+      menu.classList.add('open');
+      btn.classList.add('open');
+      btn.setAttribute('aria-label', 'Close menu');
+    }
   }
   function closeMobileMenu() {
-    document.getElementById('mobile-menu').classList.remove('open');
-    document.getElementById('burger-btn').classList.remove('open');
+    closeMenuAnimated();
   }
+  function smoothScrollTo(targetY, duration) {
+    const startY = window.scrollY;
+    const diff = targetY - startY;
+    let start = null;
+    function easeInOutCubic(t) {
+      return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+    }
+    function step(timestamp) {
+      if (!start) start = timestamp;
+      const elapsed = timestamp - start;
+      const progress = Math.min(elapsed / duration, 1);
+      window.scrollTo(0, startY + diff * easeInOutCubic(progress));
+      if (elapsed < duration) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  function navTo(e, hash) {
+    e.preventDefault();
+    closeMenuAnimated();
+    const target = hash === '#' ? document.body : document.querySelector(hash);
+    if (target) {
+      const targetY = hash === '#' ? 0 : target.getBoundingClientRect().top + window.scrollY;
+      smoothScrollTo(targetY, 400);
+    }
+  }
+
+  // Global smooth scroll for all internal anchor links
+  document.addEventListener('click', function(e) {
+    const link = e.target.closest('a[href^="#"]');
+    if (!link) return;
+    // Skip burger menu links — they use navTo already
+    if (link.closest('#mobile-menu')) return;
+    const hash = link.getAttribute('href');
+    e.preventDefault();
+    const target = hash === '#' ? document.body : document.querySelector(hash);
+    if (target) {
+      const targetY = hash === '#' ? 0 : target.getBoundingClientRect().top + window.scrollY;
+      smoothScrollTo(targetY, 400);
+    }
+  });
 </script>
 
 <!-- ═══════════════════════════════════════
      HERO
 ═══════════════════════════════════════ -->
 <section style="position:relative;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:120px 24px 80px;overflow:hidden;">
+
+  <!-- Grid vignette background -->
+  <div style="position:absolute;inset:0;background-image:linear-gradient(to right,rgba(255,255,255,0.06) 1px,transparent 1px),linear-gradient(to bottom,rgba(255,255,255,0.06) 1px,transparent 1px);background-size:48px 48px;-webkit-mask-image:radial-gradient(ellipse 80% 60% at 50% 40%,black 0%,transparent 100%);mask-image:radial-gradient(ellipse 80% 60% at 50% 40%,black 0%,transparent 100%);pointer-events:none;z-index:0;"></div>
 
   <!-- Background orbs -->
   <div class="orb" style="width:700px;height:700px;background:radial-gradient(circle,rgba(30,111,255,0.18) 0%,transparent 70%);top:-200px;left:50%;transform:translateX(-50%);animation:pulse-glow 4s ease-in-out infinite;"></div>
@@ -968,6 +1055,163 @@
 </section>
 
 <!-- ═══════════════════════════════════════
+     OUR TEAM
+═══════════════════════════════════════ -->
+<section id="team" style="padding:100px 24px;border-top:1px solid rgba(255,255,255,0.06);">
+  <div style="max-width:1060px;margin:0 auto;display:grid;grid-template-columns:1fr 1.2fr;gap:64px;align-items:stretch;" class="team-grid">
+
+    <!-- Left: photo placeholder -->
+    <div style="border-radius:16px;overflow:hidden;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);min-height:480px;display:flex;align-items:center;justify-content:center;">
+      <span style="font-size:64px;font-weight:900;color:rgba(255,255,255,0.06);letter-spacing:-0.04em;">JZ</span>
+    </div>
+
+    <!-- Right: info -->
+    <div style="display:flex;flex-direction:column;justify-content:center;">
+      <!-- Tag -->
+      <div style="display:flex;align-items:center;gap:6px;margin-bottom:20px;">
+        <span style="color:var(--blue-bright);font-size:12px;font-weight:700;">›</span>
+        <span style="color:var(--blue-bright);font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;">Founder</span>
+      </div>
+
+      <!-- Name -->
+      <h2 style="font-family:'Rajdhani',sans-serif;font-size:clamp(52px,8vw,80px);font-weight:900;letter-spacing:-0.02em;line-height:0.9;text-transform:uppercase;margin-bottom:32px;">Jake<br/>Zerafa</h2>
+
+      <!-- Bullet points -->
+      <ul style="list-style:none;display:flex;flex-direction:column;gap:12px;margin-bottom:32px;">
+        <li style="display:flex;align-items:flex-start;gap:10px;font-size:14px;color:var(--text-secondary);line-height:1.5;">
+          <span style="color:var(--blue-bright);font-size:16px;line-height:1;flex-shrink:0;">•</span>
+          Builds high-performance websites that convert visitors into customers
+        </li>
+        <li style="display:flex;align-items:flex-start;gap:10px;font-size:14px;color:var(--text-secondary);line-height:1.5;">
+          <span style="color:var(--blue-bright);font-size:16px;line-height:1;flex-shrink:0;">•</span>
+          Founder of Web Giants — built from a passion for design and results
+        </li>
+        <li style="display:flex;align-items:flex-start;gap:10px;font-size:14px;color:var(--text-secondary);line-height:1.5;">
+          <span style="color:var(--blue-bright);font-size:16px;line-height:1;flex-shrink:0;">•</span>
+          Specialises in fast, mobile-first websites for local and growing businesses
+        </li>
+      </ul>
+
+      <!-- Quote -->
+      <div style="border-left:3px solid rgba(30,111,255,0.5);padding-left:20px;">
+        <p style="font-size:15px;color:rgba(255,255,255,0.6);line-height:1.75;font-style:italic;">"I started Web Giants because I believe every business deserves a website that actually works and looks good."</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  @media (max-width:640px) {
+    .team-grid { grid-template-columns: 1fr !important; }
+    .team-grid > :first-child { order: 2; }
+    .team-grid > :last-child { order: 1; }
+  }
+</style>
+
+<!-- ═══════════════════════════════════════
+     TESTIMONIALS
+═══════════════════════════════════════ -->
+<section id="testimonials" class="section-pad" style="max-width:1100px;margin:0 auto;">
+  <div style="text-align:center;margin-bottom:64px;">
+    <div class="tag" style="margin-bottom:20px;">Testimonials</div>
+    <h2 class="t-hero">What clients are saying</h2>
+  </div>
+  <div class="testimonials-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;">
+    <div class="feature-card" style="padding:28px;">
+      <div style="margin-bottom:20px;">
+        <div style="display:flex;gap:3px;margin-bottom:16px;">
+          <span style="color:#FACC15;font-size:14px;">★★★★★</span>
+        </div>
+        <p style="font-size:15px;color:rgba(255,255,255,0.75);line-height:1.7;">"Web Giants completely transformed our online presence. Our bounce rate dropped 60% and conversions tripled within two months of launch."</p>
+      </div>
+      <div style="display:flex;align-items:center;gap:12px;padding-top:20px;border-top:1px solid rgba(255,255,255,0.06);">
+        <img src="https://placehold.co/40x40/1a2040/4D91FF?text=SK" style="width:40px;height:40px;border-radius:50%;" />
+        <div>
+          <div style="font-size:14px;font-weight:600;">Sarah Kim</div>
+          <div style="font-size:12px;color:var(--text-muted);">CEO, FreshBrew Coffee</div>
+        </div>
+      </div>
+    </div>
+    <div class="feature-card" style="padding:28px;border-color:rgba(30,111,255,0.25);">
+      <div style="margin-bottom:20px;">
+        <div style="display:flex;gap:3px;margin-bottom:16px;">
+          <span style="color:#FACC15;font-size:14px;">★★★★★</span>
+        </div>
+        <p style="font-size:15px;color:rgba(255,255,255,0.75);line-height:1.7;">"The 48-hour prototype blew our investor away. We raised our seed round with the deck built from their mockups. Worth every penny."</p>
+      </div>
+      <div style="display:flex;align-items:center;gap:12px;padding-top:20px;border-top:1px solid rgba(255,255,255,0.06);">
+        <img src="https://placehold.co/40x40/201a40/C084FC?text=MR" style="width:40px;height:40px;border-radius:50%;" />
+        <div>
+          <div style="font-size:14px;font-weight:600;">Marcus Reid</div>
+          <div style="font-size:12px;color:var(--text-muted);">Founder, Taskflow Pro</div>
+        </div>
+      </div>
+    </div>
+    <div class="feature-card" style="padding:28px;">
+      <div style="margin-bottom:20px;">
+        <div style="display:flex;gap:3px;margin-bottom:16px;">
+          <span style="color:#FACC15;font-size:14px;">★★★★★</span>
+        </div>
+        <p style="font-size:15px;color:rgba(255,255,255,0.75);line-height:1.7;">"We get compliments on our website every week. The team understood our brand better than we did. Organic traffic up 3× in 90 days."</p>
+      </div>
+      <div style="display:flex;align-items:center;gap:12px;padding-top:20px;border-top:1px solid rgba(255,255,255,0.06);">
+        <img src="https://placehold.co/40x40/1a2e20/4ADE80?text=JP" style="width:40px;height:40px;border-radius:50%;" />
+        <div>
+          <div style="font-size:14px;font-weight:600;">James Park</div>
+          <div style="font-size:12px;color:var(--text-muted);">CTO, NovaTech Industries</div>
+        </div>
+      </div>
+    </div>
+    <div class="feature-card" style="padding:28px;">
+      <div style="margin-bottom:20px;">
+        <div style="display:flex;gap:3px;margin-bottom:16px;">
+          <span style="color:#FACC15;font-size:14px;">★★★★★</span>
+        </div>
+        <p style="font-size:15px;color:rgba(255,255,255,0.75);line-height:1.7;">"From our first call to launch day was less than three weeks. I've worked with agencies that took three months and delivered less. Genuinely impressed."</p>
+      </div>
+      <div style="display:flex;align-items:center;gap:12px;padding-top:20px;border-top:1px solid rgba(255,255,255,0.06);">
+        <img src="https://placehold.co/40x40/2a1a20/F472B6?text=LC" style="width:40px;height:40px;border-radius:50%;" />
+        <div>
+          <div style="font-size:14px;font-weight:600;">Laura Chen</div>
+          <div style="font-size:12px;color:var(--text-muted);">Owner, Bloom Interiors</div>
+        </div>
+      </div>
+    </div>
+    <div class="feature-card" style="padding:28px;border-color:rgba(30,111,255,0.25);">
+      <div style="margin-bottom:20px;">
+        <div style="display:flex;gap:3px;margin-bottom:16px;">
+          <span style="color:#FACC15;font-size:14px;">★★★★★</span>
+        </div>
+        <p style="font-size:15px;color:rgba(255,255,255,0.75);line-height:1.7;">"Our old website was embarrassing. The new one has us ranking on the first page of Google and our phone hasn't stopped ringing since."</p>
+      </div>
+      <div style="display:flex;align-items:center;gap:12px;padding-top:20px;border-top:1px solid rgba(255,255,255,0.06);">
+        <img src="https://placehold.co/40x40/1a2840/60A5FA?text=DM" style="width:40px;height:40px;border-radius:50%;" />
+        <div>
+          <div style="font-size:14px;font-weight:600;">Daniel Murphy</div>
+          <div style="font-size:12px;color:var(--text-muted);">Director, Murphy Electrical</div>
+        </div>
+      </div>
+    </div>
+    <div class="feature-card" style="padding:28px;">
+      <div style="margin-bottom:20px;">
+        <div style="display:flex;gap:3px;margin-bottom:16px;">
+          <span style="color:#FACC15;font-size:14px;">★★★★★</span>
+        </div>
+        <p style="font-size:15px;color:rgba(255,255,255,0.75);line-height:1.7;">"I was sceptical about the monthly model but it's been worth every cent. The site is fast, looks incredible on mobile, and I never have to think about hosting."</p>
+      </div>
+      <div style="display:flex;align-items:center;gap:12px;padding-top:20px;border-top:1px solid rgba(255,255,255,0.06);">
+        <img src="https://placehold.co/40x40/1e2a1a/86EFAC?text=AT" style="width:40px;height:40px;border-radius:50%;" />
+        <div>
+          <div style="font-size:14px;font-weight:600;">Aoife Tierney</div>
+          <div style="font-size:12px;color:var(--text-muted);">Founder, Tierney Physio</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
      PRICING
 ═══════════════════════════════════════ -->
 <section id="pricing" class="section-pad" style="max-width:1100px;margin:0 auto;">
@@ -986,12 +1230,12 @@
       <div style="font-size:14px;color:var(--text-muted);margin-bottom:28px;">per month</div>
       <div class="divider" style="margin-bottom:24px;"></div>
       <ul style="display:flex;flex-direction:column;gap:12px;margin-bottom:32px;">
-        <li style="font-size:14px;color:rgba(255,255,255,0.7);display:flex;gap:10px;align-items:center;"><span style="color:#28C840;">✓</span> Up to 1 page</li>
-        <li style="font-size:14px;color:rgba(255,255,255,0.7);display:flex;gap:10px;align-items:center;"><span style="color:#28C840;">✓</span> Free domain &amp; hosting</li>
-        <li style="font-size:14px;color:rgba(255,255,255,0.7);display:flex;gap:10px;align-items:center;"><span style="color:#28C840;">✓</span> Mobile responsive</li>
+        <li style="font-size:14px;color:rgba(255,255,255,0.7);display:flex;gap:10px;align-items:center;"><span style="color:#28C840;">✓</span> Custom-designed single-page website</li>
+        <li style="font-size:14px;color:rgba(255,255,255,0.7);display:flex;gap:10px;align-items:center;"><span style="color:#28C840;">✓</span> Free domain included</li>
+        <li style="font-size:14px;color:rgba(255,255,255,0.7);display:flex;gap:10px;align-items:center;"><span style="color:#28C840;">✓</span> Hosting, security &amp; backups</li>
+        <li style="font-size:14px;color:rgba(255,255,255,0.7);display:flex;gap:10px;align-items:center;"><span style="color:#28C840;">✓</span> Mobile responsive build</li>
         <li style="font-size:14px;color:rgba(255,255,255,0.7);display:flex;gap:10px;align-items:center;"><span style="color:#28C840;">✓</span> Free revisions for 30 days</li>
-        <li style="font-size:14px;color:rgba(255,255,255,0.35);display:flex;gap:10px;align-items:center;"><span>—</span> Google reviews integration</li>
-        <li style="font-size:14px;color:rgba(255,255,255,0.35);display:flex;gap:10px;align-items:center;"><span>—</span> Custom design</li>
+        <li style="font-size:14px;color:rgba(255,255,255,0.25);display:flex;gap:10px;align-items:center;"><span>—</span> Google reviews integration</li>
       </ul>
       <a href="#contact" class="btn-ghost" style="display:block;text-align:center;">Get started</a>
     </div>
@@ -1007,12 +1251,12 @@
       <div style="font-size:14px;color:var(--text-muted);margin-bottom:28px;">per month</div>
       <div class="divider" style="margin-bottom:24px;"></div>
       <ul style="display:flex;flex-direction:column;gap:12px;margin-bottom:32px;">
-        <li style="font-size:14px;color:rgba(255,255,255,0.85);display:flex;gap:10px;align-items:center;"><span style="color:#28C840;">✓</span> Up to 5 pages</li>
-        <li style="font-size:14px;color:rgba(255,255,255,0.85);display:flex;gap:10px;align-items:center;"><span style="color:#28C840;">✓</span> Free domain &amp; hosting</li>
-        <li style="font-size:14px;color:rgba(255,255,255,0.85);display:flex;gap:10px;align-items:center;"><span style="color:#28C840;">✓</span> Mobile responsive</li>
+        <li style="font-size:14px;color:rgba(255,255,255,0.85);display:flex;gap:10px;align-items:center;"><span style="color:#28C840;">✓</span> Custom multi-page website (up to 5 pages)</li>
+        <li style="font-size:14px;color:rgba(255,255,255,0.85);display:flex;gap:10px;align-items:center;"><span style="color:#28C840;">✓</span> Free domain included</li>
+        <li style="font-size:14px;color:rgba(255,255,255,0.85);display:flex;gap:10px;align-items:center;"><span style="color:#28C840;">✓</span> Hosting, security &amp; backups</li>
+        <li style="font-size:14px;color:rgba(255,255,255,0.85);display:flex;gap:10px;align-items:center;"><span style="color:#28C840;">✓</span> Mobile responsive build</li>
         <li style="font-size:14px;color:rgba(255,255,255,0.85);display:flex;gap:10px;align-items:center;"><span style="color:#28C840;">✓</span> Free revisions for 60 days</li>
         <li style="font-size:14px;color:rgba(255,255,255,0.85);display:flex;gap:10px;align-items:center;"><span style="color:#28C840;">✓</span> Google reviews integration</li>
-        <li style="font-size:14px;color:rgba(255,255,255,0.35);display:flex;gap:10px;align-items:center;"><span>—</span> Custom design</li>
       </ul>
       <a href="#contact" class="btn-primary" style="display:block;text-align:center;">Get started</a>
     </div>
@@ -1026,15 +1270,19 @@
       <div style="font-size:14px;color:var(--text-muted);margin-bottom:28px;">per month</div>
       <div class="divider" style="margin-bottom:24px;"></div>
       <ul style="display:flex;flex-direction:column;gap:12px;margin-bottom:32px;">
-        <li style="font-size:14px;color:rgba(255,255,255,0.7);display:flex;gap:10px;align-items:center;"><span style="color:#28C840;">✓</span> Up to 10 pages</li>
-        <li style="font-size:14px;color:rgba(255,255,255,0.7);display:flex;gap:10px;align-items:center;"><span style="color:#28C840;">✓</span> Free domain &amp; hosting</li>
-        <li style="font-size:14px;color:rgba(255,255,255,0.7);display:flex;gap:10px;align-items:center;"><span style="color:#28C840;">✓</span> Mobile responsive</li>
+        <li style="font-size:14px;color:rgba(255,255,255,0.7);display:flex;gap:10px;align-items:center;"><span style="color:#28C840;">✓</span> Custom multi-page website (up to 10 pages)</li>
+        <li style="font-size:14px;color:rgba(255,255,255,0.7);display:flex;gap:10px;align-items:center;"><span style="color:#28C840;">✓</span> Free domain included</li>
+        <li style="font-size:14px;color:rgba(255,255,255,0.7);display:flex;gap:10px;align-items:center;"><span style="color:#28C840;">✓</span> Hosting, security &amp; backups</li>
+        <li style="font-size:14px;color:rgba(255,255,255,0.7);display:flex;gap:10px;align-items:center;"><span style="color:#28C840;">✓</span> Mobile responsive build</li>
         <li style="font-size:14px;color:rgba(255,255,255,0.7);display:flex;gap:10px;align-items:center;"><span style="color:#28C840;">✓</span> Free revisions for 90 days</li>
         <li style="font-size:14px;color:rgba(255,255,255,0.7);display:flex;gap:10px;align-items:center;"><span style="color:#28C840;">✓</span> Google reviews integration</li>
-        <li style="font-size:14px;color:rgba(255,255,255,0.7);display:flex;gap:10px;align-items:center;"><span style="color:#28C840;">✓</span> Custom design</li>
+
       </ul>
       <a href="#contact" class="btn-ghost" style="display:block;text-align:center;">Get started</a>
     </div>
+  </div>
+  <div style="margin:40px auto 0;max-width:1060px;padding:20px 28px;border:1px solid rgba(255,255,255,0.08);border-radius:16px;background:rgba(255,255,255,0.03);text-align:center;">
+    <p style="font-size:14px;color:var(--text-muted);line-height:1.7;"><span style="color:rgba(255,255,255,0.6);font-weight:600;">What's included in your monthly fee:</span> domain, hosting, security, software updates, automated backups, and ongoing support. No hidden renewal fees.</p>
   </div>
 </section>
 
@@ -1143,9 +1391,6 @@
       <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--text-muted);">
         <span style="color:#28C840;">✓</span> Response within 24h
       </div>
-      <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--text-muted);">
-        <span style="color:#28C840;">✓</span> No obligation
-      </div>
     </div>
   </div>
 </section>
@@ -1165,7 +1410,7 @@
         <span style="font-size:17px;font-weight:600;letter-spacing:-0.01em;">How long does it take to build my website?</span>
         <span class="faq-icon" style="font-size:20px;color:var(--blue-bright);flex-shrink:0;transition:transform 0.2s ease;">+</span>
       </button>
-      <div class="faq-answer" style="display:none;padding-top:14px;">
+      <div class="faq-answer" style="padding-top:0;">
         <p style="font-size:15px;color:var(--text-secondary);line-height:1.7;">Most websites are designed and built within 2–4 weeks. You'll see your first design within 48 hours of getting started, and we work quickly from there.</p>
       </div>
     </div>
@@ -1175,8 +1420,9 @@
         <span style="font-size:17px;font-weight:600;letter-spacing:-0.01em;">How much does a website cost?</span>
         <span class="faq-icon" style="font-size:20px;color:var(--blue-bright);flex-shrink:0;transition:transform 0.2s ease;">+</span>
       </button>
-      <div class="faq-answer" style="display:none;padding-top:14px;">
-        <p style="font-size:15px;color:var(--text-secondary);line-height:1.7;">We offer two straightforward plans — Starter at €199/month (up to 1 page, free domain &amp; hosting, 30-day support) and Growth at €499/month (up to 5 pages, custom design, Google reviews integration, and 90-day support). No hourly billing, no hidden fees — just a fixed monthly price for everything.</p>
+      <div class="faq-answer" style="padding-top:0;">
+        <p style="font-size:15px;color:var(--text-secondary);line-height:1.7;">We offer three plans — Starter at €199/month, Standard at €299/month, and Growth at €499/month. Every plan includes a custom-designed website, your domain, hosting, security, and ongoing support.</p>
+        <a href="#pricing" style="display:inline-flex;align-items:center;gap:8px;margin-top:16px;font-size:14px;font-weight:600;color:var(--blue-bright);border:1px solid rgba(30,111,255,0.4);border-radius:10px;padding:10px 20px;text-decoration:none;transition:background 0.2s ease,border-color 0.2s ease;" onmouseover="this.style.background='rgba(30,111,255,0.1)';this.style.borderColor='rgba(30,111,255,0.7)'" onmouseout="this.style.background='';this.style.borderColor='rgba(30,111,255,0.4)'" onclick="navTo(event,'#pricing')">Compare plans</a></p>
       </div>
     </div>
 
@@ -1185,7 +1431,7 @@
         <span style="font-size:17px;font-weight:600;letter-spacing:-0.01em;">Do I need to know anything technical?</span>
         <span class="faq-icon" style="font-size:20px;color:var(--blue-bright);flex-shrink:0;transition:transform 0.2s ease;">+</span>
       </button>
-      <div class="faq-answer" style="display:none;padding-top:14px;">
+      <div class="faq-answer" style="padding-top:0;">
         <p style="font-size:15px;color:var(--text-secondary);line-height:1.7;">Not at all. We handle everything — design, development, and launch. All you need to do is tell us about your business and approve the design.</p>
       </div>
     </div>
@@ -1195,32 +1441,56 @@
         <span style="font-size:17px;font-weight:600;letter-spacing:-0.01em;">Can I make changes after the website is live?</span>
         <span class="faq-icon" style="font-size:20px;color:var(--blue-bright);flex-shrink:0;transition:transform 0.2s ease;">+</span>
       </button>
-      <div class="faq-answer" style="display:none;padding-top:14px;">
-        <p style="font-size:15px;color:var(--text-secondary);line-height:1.7;">Yes. After launch, both plans include a free revision period — 30 days on the Starter plan (€199/month) and 90 days on the Growth plan (€499/month). During that time you can request any changes and we'll take care of them at no extra cost.</p>
+      <div class="faq-answer" style="padding-top:0;">
+        <p style="font-size:15px;color:var(--text-secondary);line-height:1.7;">Yes. Every plan includes a post-launch support window — 30 days on Starter, 60 days on Standard, and 90 days on Growth. During that time you can request any changes at no extra cost. After the window, your monthly fee continues to cover hosting, security, and routine maintenance. For larger content changes or new sections, we'll agree a one-off fee upfront.</p>
+      </div>
+    </div>
+
+
+    <div class="faq-item" style="border-top:1px solid rgba(255,255,255,0.06);padding:24px 0;">
+      <button onclick="toggleFaq(this)" style="width:100%;display:flex;justify-content:space-between;align-items:center;background:none;border:none;color:#fff;cursor:pointer;text-align:left;gap:16px;">
+        <span style="font-size:17px;font-weight:600;letter-spacing:-0.01em;">What is the Google reviews integration?</span>
+        <span class="faq-icon" style="font-size:20px;color:var(--blue-bright);flex-shrink:0;transition:transform 0.2s ease;">+</span>
+      </button>
+      <div class="faq-answer" style="padding-top:0;">
+        <p style="font-size:15px;color:var(--text-secondary);line-height:1.7;">We add a review section to your website. Customers who rate you 4 or 5 stars are sent straight to your Google page to leave a public review. Anyone who rates 3 stars or below gets a private feedback form instead — so negative feedback stays off Google and goes directly to you. We also give you a QR code to print on receipts or business cards, anywhere you interact with customers.</p>
       </div>
     </div>
 
     <div class="faq-item" style="border-top:1px solid rgba(255,255,255,0.06);border-bottom:1px solid rgba(255,255,255,0.06);padding:24px 0;">
       <button onclick="toggleFaq(this)" style="width:100%;display:flex;justify-content:space-between;align-items:center;background:none;border:none;color:#fff;cursor:pointer;text-align:left;gap:16px;">
-        <span style="font-size:17px;font-weight:600;letter-spacing:-0.01em;">Will my website show up on Google?</span>
+        <span style="font-size:17px;font-weight:600;letter-spacing:-0.01em;">Do I own my website?</span>
         <span class="faq-icon" style="font-size:20px;color:var(--blue-bright);flex-shrink:0;transition:transform 0.2s ease;">+</span>
       </button>
-      <div class="faq-answer" style="display:none;padding-top:14px;">
-        <p style="font-size:15px;color:var(--text-secondary);line-height:1.7;">Every website we build is fully optimised for search engines from day one — so you have the best possible chance of being found by your customers.</p>
+      <div class="faq-answer" style="padding-top:0;">
+        <p style="font-size:15px;color:var(--text-secondary);line-height:1.7;">Yes — you own all the content, copy, and imagery on your site. The monthly fee covers what keeps it live: hosting, domain, security, and backups.</p>
       </div>
     </div>
 
   </div>
 </section>
+<style>
+  .faq-answer {
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    transition: max-height 0.4s cubic-bezier(.16,1,.3,1), opacity 0.3s ease, padding-top 0.3s ease;
+  }
+  .faq-answer.open {
+    max-height: 600px;
+    opacity: 1;
+    padding-top: 14px !important;
+  }
+</style>
 <script>
 function toggleFaq(btn) {
   const answer = btn.nextElementSibling;
   const icon = btn.querySelector('.faq-icon');
-  const isOpen = answer.style.display === 'block';
-  document.querySelectorAll('.faq-answer').forEach(a => a.style.display = 'none');
+  const isOpen = answer.classList.contains('open');
+  document.querySelectorAll('.faq-answer').forEach(a => a.classList.remove('open'));
   document.querySelectorAll('.faq-icon').forEach(i => { i.textContent = '+'; i.style.transform = 'rotate(0deg)'; });
   if (!isOpen) {
-    answer.style.display = 'block';
+    answer.classList.add('open');
     icon.textContent = '×';
     icon.style.transform = 'rotate(90deg)';
   }
@@ -1299,7 +1569,7 @@ function toggleFaq(btn) {
 <script>
   // Scroll spy — highlight active nav link based on visible section
   const navLinks = document.querySelectorAll('a.nav-link[href^="#"]');
-  const sectionIds = ['process', 'results', 'pricing', 'contact', 'faq'];
+  const sectionIds = ['process', 'results', 'team', 'testimonials', 'pricing', 'contact', 'faq'];
 
   function setActive(id) {
     navLinks.forEach(link => {
