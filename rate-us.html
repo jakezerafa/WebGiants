@@ -339,17 +339,6 @@
 
   <div style="max-width:560px;margin:0 auto;text-align:center;position:relative;">
 
-    <div style="display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:20px;">
-      <svg width="28" height="28" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-        <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
-        <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/>
-        <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/>
-        <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.18 1.48-4.97 2.31-8.16 2.31-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>
-        <path fill="none" d="M0 0h48v48H0z"/>
-      </svg>
-      <span style="font-size:15px;font-weight:600;color:rgba(255,255,255,0.5);letter-spacing:0.02em;">Reviews</span>
-    </div>
-
     <h2 class="t-title" style="margin-bottom:12px;">How did we do?</h2>
     <p style="font-size:15px;color:var(--text-secondary);margin-bottom:40px;">Your feedback helps us grow. Tap a star to rate your experience.</p>
 
@@ -367,6 +356,22 @@
         <p style="font-size:13px;color:var(--text-muted);margin-bottom:20px;">We read every response and take action.</p>
         <textarea id="gr-text" rows="4" placeholder="Tell us what we could do better…" style="width:100%;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:14px;font-size:14px;color:#fff;font-family:inherit;resize:vertical;outline:none;transition:border-color 0.2s ease;" onfocus="this.style.borderColor='rgba(30,111,255,0.5)'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'"></textarea>
         <button onclick="grSubmitFeedback()" class="btn-primary" style="margin-top:16px;width:100%;justify-content:center;">Send feedback</button>
+      </div>
+    </div>
+
+    <div id="gr-google" style="display:none;animation:fadeInUp 0.4s cubic-bezier(.16,1,.3,1) both;">
+      <div style="background:var(--elevated);border:1px solid rgba(66,133,244,0.3);border-radius:16px;padding:32px;text-align:center;">
+        <p style="font-size:16px;font-weight:600;color:#fff;margin-bottom:6px;">We're glad you enjoyed it!</p>
+        <p style="font-size:14px;color:var(--text-muted);margin-bottom:24px;">Would you mind sharing your experience on Google?</p>
+        <a href="https://search.google.com/local/writereview?placeid=YOUR_PLACE_ID" target="_blank" rel="noopener" class="btn-primary" style="display:inline-flex;align-items:center;gap:10px;justify-content:center;text-decoration:none;">
+          <svg width="18" height="18" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;">
+            <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
+            <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/>
+            <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/>
+            <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.18 1.48-4.97 2.31-8.16 2.31-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>
+          </svg>
+          Leave a Google review
+        </a>
       </div>
     </div>
 
@@ -517,11 +522,12 @@
     grHighlight(n);
     document.getElementById('gr-feedback').style.display = 'none';
     document.getElementById('gr-thanks').style.display = 'none';
+    document.getElementById('gr-google').style.display = 'none';
 
     if (n >= 4) {
       setTimeout(() => {
-        window.open('https://search.google.com/local/writereview?placeid=YOUR_PLACE_ID', '_blank');
-      }, 300);
+        document.getElementById('gr-google').style.display = 'block';
+      }, 200);
     } else {
       setTimeout(() => {
         document.getElementById('gr-feedback').style.display = 'block';

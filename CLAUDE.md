@@ -53,7 +53,7 @@ When the user asks to "insert the Google reviews integration", add this section 
 
 **How it works:**
 - User taps 1–3 stars → internal feedback form appears ("How can we improve our service?" + textarea + submit)
-- User taps 4–5 stars → redirected to Google review page (opens in new tab)
+- User taps 4–5 stars → a card appears with a "Leave a Google review" button (opens in new tab — no auto-redirect)
 - After submitting low-rating feedback → thank you confirmation shown
 
 **Insert this HTML block:**
@@ -62,15 +62,6 @@ When the user asks to "insert the Google reviews integration", add this section 
 <section style="padding:100px 24px;border-top:1px solid rgba(255,255,255,0.06);position:relative;overflow:hidden;">
   <div style="position:absolute;top:0;left:50%;transform:translateX(-50%);width:700px;height:400px;background:radial-gradient(ellipse at 50% 0%,rgba(30,111,255,0.08) 0%,transparent 70%);pointer-events:none;"></div>
   <div style="max-width:560px;margin:0 auto;text-align:center;position:relative;">
-    <div style="display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:20px;">
-      <svg width="28" height="28" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-        <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
-        <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/>
-        <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/>
-        <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.18 1.48-4.97 2.31-8.16 2.31-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>
-      </svg>
-      <span style="font-size:15px;font-weight:600;color:rgba(255,255,255,0.5);letter-spacing:0.02em;">Reviews</span>
-    </div>
     <h2 class="t-title" style="margin-bottom:12px;">How did we do?</h2>
     <p style="font-size:15px;color:var(--text-secondary);margin-bottom:40px;">Your feedback helps us grow. Tap a star to rate your experience.</p>
     <div id="gr-stars" style="display:flex;justify-content:center;gap:12px;margin-bottom:40px;">
@@ -79,6 +70,21 @@ When the user asks to "insert the Google reviews integration", add this section 
       <button onclick="grRate(3)" onmouseenter="grHover(3)" onmouseleave="grHoverOut()" class="gr-star" aria-label="3 stars">★</button>
       <button onclick="grRate(4)" onmouseenter="grHover(4)" onmouseleave="grHoverOut()" class="gr-star" aria-label="4 stars">★</button>
       <button onclick="grRate(5)" onmouseenter="grHover(5)" onmouseleave="grHoverOut()" class="gr-star" aria-label="5 stars">★</button>
+    </div>
+    <div id="gr-google" style="display:none;animation:fadeInUp 0.4s cubic-bezier(.16,1,.3,1) both;">
+      <div style="background:var(--elevated);border:1px solid rgba(66,133,244,0.3);border-radius:16px;padding:32px;text-align:center;">
+        <p style="font-size:16px;font-weight:600;color:#fff;margin-bottom:6px;">We're glad you enjoyed it!</p>
+        <p style="font-size:14px;color:var(--text-muted);margin-bottom:24px;">Would you mind sharing your experience on Google?</p>
+        <a href="GOOGLE_REVIEW_URL_HERE" target="_blank" rel="noopener" class="btn-primary" style="display:inline-flex;align-items:center;gap:10px;justify-content:center;text-decoration:none;">
+          <svg width="18" height="18" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;">
+            <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
+            <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/>
+            <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/>
+            <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.18 1.48-4.97 2.31-8.16 2.31-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>
+          </svg>
+          Leave a Google review
+        </a>
+      </div>
     </div>
     <div id="gr-feedback" style="display:none;animation:fadeInUp 0.4s cubic-bezier(.16,1,.3,1) both;">
       <div style="background:var(--elevated);border:1px solid var(--border);border-radius:16px;padding:32px;text-align:left;">
@@ -115,8 +121,9 @@ When the user asks to "insert the Google reviews integration", add this section 
     grHighlight(n);
     document.getElementById('gr-feedback').style.display = 'none';
     document.getElementById('gr-thanks').style.display = 'none';
+    document.getElementById('gr-google').style.display = 'none';
     if (n >= 4) {
-      setTimeout(() => window.open('GOOGLE_REVIEW_URL_HERE', '_blank'), 300);
+      setTimeout(() => { document.getElementById('gr-google').style.display = 'block'; }, 200);
     } else {
       setTimeout(() => { document.getElementById('gr-feedback').style.display = 'block'; }, 200);
     }
