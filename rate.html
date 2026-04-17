@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rate Us — Web Giants</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Rajdhani:wght@600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --blue: #1E6FFF;
+      --blue-bright: #4D91FF;
+      --blue-glow: rgba(30,111,255,0.35);
+      --surface: #0A0A0A;
+      --elevated: #111111;
+      --floating: #1A1A1A;
+      --border: rgba(255,255,255,0.08);
+      --text-muted: rgba(255,255,255,0.45);
+      --text-secondary: rgba(255,255,255,0.7);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: #000;
+      background-image:
+        radial-gradient(ellipse 80% 50% at 20% 10%, rgba(30,111,255,0.18) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 40% at 80% 30%, rgba(30,111,255,0.12) 0%, transparent 55%),
+        radial-gradient(ellipse 70% 50% at 50% 70%, rgba(30,111,255,0.10) 0%, transparent 60%);
+      color: #fff;
+      font-family: Inter, -apple-system, BlinkMacSystemFont, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 24px;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.4;
+    }
+
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--blue);
+      color: #fff;
+      padding: 12px 24px;
+      border-radius: 10px;
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      text-decoration: none;
+      transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+      box-shadow: 0 4px 20px rgba(30,111,255,0.3);
+      cursor: pointer;
+      border: none;
+      font-family: inherit;
+    }
+    .btn-primary:hover { background: #2d7fff; transform: translateY(-1px); box-shadow: 0 6px 28px rgba(30,111,255,0.45); }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .fade-in { animation: fadeInUp 0.5s cubic-bezier(.16,1,.3,1) both; }
+
+    .gr-star {
+      font-size: 44px;
+      color: rgba(255,255,255,0.15);
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+      line-height: 1;
+      transition: color 0.15s ease, transform 0.15s cubic-bezier(.34,1.56,.64,1);
+    }
+    .gr-star.active { color: #FBBC04; }
+    .gr-star:hover { transform: scale(1.15); }
+    .gr-star:focus-visible { outline: 2px solid #FBBC04; border-radius: 4px; }
+
+    @keyframes fadeInUp2 {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    #gr-google, #gr-feedback, #gr-thanks {
+      animation: fadeInUp2 0.4s cubic-bezier(.16,1,.3,1) both;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Back link -->
+  <a href="index.html" style="position:fixed;top:20px;left:20px;display:flex;align-items:center;gap:6px;font-size:14px;font-weight:500;color:var(--text-muted);text-decoration:none;transition:color 0.2s ease;z-index:10;" onmouseenter="this.style.color='#fff'" onmouseleave="this.style.color='var(--text-muted)'">
+    ← Back
+  </a>
+
+  <!-- Logo -->
+  <a href="index.html" style="display:flex;align-items:center;gap:10px;text-decoration:none;margin-bottom:48px;">
+    <img src="brand assets/ChatGPT Image Mar 7, 2026, 10_42_19 AM.png" alt="Web Giants" style="width:40px;height:40px;border-radius:50%;" />
+    <span style="font-family:'Rajdhani',sans-serif;font-size:18px;font-weight:700;color:#fff;letter-spacing:0.12em;text-transform:uppercase;">Web Giants</span>
+  </a>
+
+  <!-- Review card -->
+  <div class="fade-in" style="max-width:520px;width:100%;text-align:center;">
+    <h1 style="font-size:clamp(28px,5vw,42px);font-weight:800;letter-spacing:-0.035em;line-height:1.1;margin-bottom:12px;">How did we do?</h1>
+    <p style="font-size:16px;color:var(--text-secondary);margin-bottom:40px;line-height:1.6;">Your feedback helps us grow. Tap a star to rate your experience.</p>
+
+    <!-- Stars -->
+    <div id="gr-stars" style="display:flex;justify-content:center;gap:8px;margin-bottom:40px;">
+      <button onclick="grRate(1)" onmouseenter="grHover(1)" onmouseleave="grHoverOut()" class="gr-star" aria-label="1 star">★</button>
+      <button onclick="grRate(2)" onmouseenter="grHover(2)" onmouseleave="grHoverOut()" class="gr-star" aria-label="2 stars">★</button>
+      <button onclick="grRate(3)" onmouseenter="grHover(3)" onmouseleave="grHoverOut()" class="gr-star" aria-label="3 stars">★</button>
+      <button onclick="grRate(4)" onmouseenter="grHover(4)" onmouseleave="grHoverOut()" class="gr-star" aria-label="4 stars">★</button>
+      <button onclick="grRate(5)" onmouseenter="grHover(5)" onmouseleave="grHoverOut()" class="gr-star" aria-label="5 stars">★</button>
+    </div>
+
+    <!-- 4–5 stars: Google review prompt -->
+    <div id="gr-google" style="display:none;">
+      <div style="background:var(--elevated);border:1px solid rgba(66,133,244,0.3);border-radius:16px;padding:32px;text-align:center;">
+        <p style="font-size:16px;font-weight:600;color:#fff;margin-bottom:6px;">We're glad you enjoyed it!</p>
+        <p style="font-size:14px;color:var(--text-muted);margin-bottom:24px;">Would you mind sharing your experience on Google?</p>
+        <a href="GOOGLE_REVIEW_URL_HERE" target="_blank" rel="noopener" class="btn-primary" style="display:inline-flex;align-items:center;gap:10px;justify-content:center;text-decoration:none;background:#1a1a1a;border:1px solid rgba(255,255,255,0.12);color:#fff;">
+          <svg width="18" height="18" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;">
+            <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
+            <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/>
+            <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/>
+            <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.18 1.48-4.97 2.31-8.16 2.31-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>
+          </svg>
+          Leave a Google review
+        </a>
+      </div>
+    </div>
+
+    <!-- 1–3 stars: feedback form -->
+    <div id="gr-feedback" style="display:none;">
+      <div style="background:var(--elevated);border:1px solid var(--border);border-radius:16px;padding:32px;text-align:left;">
+        <p style="font-size:15px;font-weight:600;color:#fff;margin-bottom:6px;">How can we improve our service?</p>
+        <p style="font-size:13px;color:var(--text-muted);margin-bottom:20px;">We read every response and take action.</p>
+        <textarea id="gr-text" rows="4" placeholder="Tell us what we could do better…" style="width:100%;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:14px;font-size:14px;color:#fff;font-family:inherit;resize:vertical;outline:none;transition:border-color 0.2s ease;" onfocus="this.style.borderColor='rgba(30,111,255,0.5)'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'"></textarea>
+        <button onclick="grSubmitFeedback()" class="btn-primary" style="margin-top:16px;width:100%;justify-content:center;">Send feedback</button>
+      </div>
+    </div>
+
+    <!-- Thank you -->
+    <div id="gr-thanks" style="display:none;">
+      <div style="background:var(--elevated);border:1px solid rgba(52,168,83,0.3);border-radius:16px;padding:32px;">
+        <div style="font-size:36px;margin-bottom:12px;">✓</div>
+        <p style="font-size:16px;font-weight:600;color:#34A853;margin-bottom:6px;">Thank you for your feedback!</p>
+        <p style="font-size:14px;color:var(--text-muted);">We'll use it to keep improving our service.</p>
+      </div>
+    </div>
+  </div>
+
+<script>
+  let grSelected = 0;
+  const grStars = () => document.querySelectorAll('.gr-star');
+  function grHighlight(n) { grStars().forEach((s,i) => s.classList.toggle('active', i < n)); }
+  function grHover(n) { grHighlight(n); }
+  function grHoverOut() { grHighlight(grSelected); }
+  function grRate(n) {
+    grSelected = n;
+    grHighlight(n);
+    document.getElementById('gr-feedback').style.display = 'none';
+    document.getElementById('gr-thanks').style.display = 'none';
+    document.getElementById('gr-google').style.display = 'none';
+    if (n >= 4) {
+      setTimeout(() => { document.getElementById('gr-google').style.display = 'block'; }, 200);
+    } else {
+      setTimeout(() => { document.getElementById('gr-feedback').style.display = 'block'; }, 200);
+    }
+  }
+  function grSubmitFeedback() {
+    const text = document.getElementById('gr-text').value.trim();
+    if (!text) return;
+    document.getElementById('gr-feedback').style.display = 'none';
+    document.getElementById('gr-thanks').style.display = 'block';
+    // TODO: send `text` and `grSelected` to backend / form handler
+  }
+</script>
+</body>
+</html>
