@@ -569,7 +569,7 @@
   <a href="#process" onclick="navTo(event,'#process')">Process</a>
   <a href="#pricing" onclick="navTo(event,'#pricing')">Pricing</a>
   <a href="#contact" onclick="navTo(event,'#contact')">Contact</a>
-  <a href="rate.html" style="color:#FBBC04;">⭐ Rate Us</a>
+  <a href="rate.html" style="color:#FBBC04;" onclick="sessionStorage.setItem('returnScrollY', window.scrollY)">⭐ Rate Us</a>
 </div>
 
 <script>
@@ -597,6 +597,38 @@
   function closeMobileMenu() {
     closeMenuAnimated();
   }
+  document.addEventListener('click', function(e) {
+    const menu = document.getElementById('mobile-menu');
+    if (menu.classList.contains('open') && !menu.contains(e.target) && !document.getElementById('burger-btn').contains(e.target)) {
+      closeMenuAnimated();
+    }
+  });
+  window.addEventListener('scroll', function() {
+    const menu = document.getElementById('mobile-menu');
+    if (menu.classList.contains('open')) closeMenuAnimated();
+  }, { passive: true });
+  // Restore scroll position when returning from results/rate page, or on reload
+  history.scrollRestoration = 'manual';
+  (function() {
+    const returnY = sessionStorage.getItem('returnScrollY');
+    const isReload = performance.getEntriesByType('navigation')[0]?.type === 'reload';
+    const savedY = sessionStorage.getItem('pageScrollY');
+    const targetY = returnY !== null ? parseInt(returnY, 10)
+                  : (isReload && savedY !== null) ? parseInt(savedY, 10)
+                  : null;
+    if (returnY !== null) sessionStorage.removeItem('returnScrollY');
+    if (targetY !== null) {
+      document.documentElement.style.visibility = 'hidden';
+      window.addEventListener('load', function() {
+        window.scrollTo(0, targetY);
+        document.documentElement.style.visibility = '';
+      });
+    }
+    window.addEventListener('scroll', function() {
+      sessionStorage.setItem('pageScrollY', window.scrollY);
+    });
+  })();
+
   function smoothScrollTo(targetY, duration) {
     const startY = window.scrollY;
     const diff = targetY - startY;
@@ -1223,6 +1255,13 @@
       </div>
 
     </div><!-- /case studies -->
+
+    <!-- See More button -->
+    <div style="text-align:center;margin-top:56px;">
+      <a href="results.html" class="btn-ghost" style="font-size:15px;padding:13px 28px;" onclick="sessionStorage.setItem('returnScrollY', window.scrollY)">
+        See all our work &nbsp;→
+      </a>
+    </div>
 
   </div><!-- /max-width -->
 </section>
