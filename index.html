@@ -445,9 +445,8 @@
 
     }
 
-    /* Burger button always visible */
     .burger-btn {
-      display: flex;
+      display: none;
       flex-direction: column;
       justify-content: center;
       gap: 5px;
@@ -546,13 +545,13 @@
     <span style="font-family:'Rajdhani',sans-serif;font-size:18px;font-weight:700;color:#fff;letter-spacing:0.12em;text-transform:uppercase;">Web Giants</span>
   </a>
 
-  <div style="display:none;" class="hidden-mobile">
+  <div style="display:flex;gap:4px;" class="hidden-mobile">
     <a href="#" class="nav-link">Home</a>
     <a href="#results" class="nav-link">Results</a>
     <a href="#process" class="nav-link">Process</a>
-    <a href="#testimonials" class="nav-link">Testimonials</a>
-    <a href="#pricing" class="nav-link">Pricing</a>
+<a href="#pricing" class="nav-link">Pricing</a>
     <a href="#contact" class="nav-link">Contact</a>
+    <a href="rate.html" class="nav-link" style="color:#FBBC04;" onclick="sessionStorage.setItem('returnScrollY', window.scrollY)">⭐ Rate Us</a>
   </div>
 
   <div style="display:flex;align-items:center;gap:10px;">
@@ -1385,108 +1384,6 @@
     .founder-details { order: 3; }
   }
 </style>
-
-<!-- ═══════════════════════════════════════
-     TESTIMONIALS
-═══════════════════════════════════════ -->
-<section id="testimonials" class="section-pad" style="max-width:1100px;margin:0 auto;">
-  <div style="text-align:center;margin-bottom:64px;">
-    <div class="tag" style="margin-bottom:20px;">Testimonials</div>
-    <h2 class="t-hero">What clients are saying</h2>
-  </div>
-  <div class="testimonials-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;">
-    <div class="feature-card" style="padding:28px;">
-      <div style="margin-bottom:20px;">
-        <div style="display:flex;gap:3px;margin-bottom:16px;">
-          <span style="color:#FACC15;font-size:14px;">★★★★★</span>
-        </div>
-        <p style="font-size:15px;color:rgba(255,255,255,0.75);line-height:1.7;">"Web Giants completely transformed our online presence. Our bounce rate dropped 60% and conversions tripled within two months of launch."</p>
-      </div>
-      <div style="display:flex;align-items:center;gap:12px;padding-top:20px;border-top:1px solid rgba(255,255,255,0.06);">
-        <img src="https://placehold.co/40x40/1a2040/4D91FF?text=SK" style="width:40px;height:40px;border-radius:50%;" />
-        <div>
-          <div style="font-size:14px;font-weight:600;">Sarah Kim</div>
-          <div style="font-size:12px;color:var(--text-muted);">CEO, FreshBrew Coffee</div>
-        </div>
-      </div>
-    </div>
-    <div class="feature-card" style="padding:28px;border-color:rgba(30,111,255,0.25);">
-      <div style="margin-bottom:20px;">
-        <div style="display:flex;gap:3px;margin-bottom:16px;">
-          <span style="color:#FACC15;font-size:14px;">★★★★★</span>
-        </div>
-        <p style="font-size:15px;color:rgba(255,255,255,0.75);line-height:1.7;">"The 48-hour prototype blew our investor away. We raised our seed round with the deck built from their mockups. Worth every penny."</p>
-      </div>
-      <div style="display:flex;align-items:center;gap:12px;padding-top:20px;border-top:1px solid rgba(255,255,255,0.06);">
-        <img src="https://placehold.co/40x40/201a40/C084FC?text=MR" style="width:40px;height:40px;border-radius:50%;" />
-        <div>
-          <div style="font-size:14px;font-weight:600;">Marcus Reid</div>
-          <div style="font-size:12px;color:var(--text-muted);">Founder, Taskflow Pro</div>
-        </div>
-      </div>
-    </div>
-    <div class="feature-card" style="padding:28px;">
-      <div style="margin-bottom:20px;">
-        <div style="display:flex;gap:3px;margin-bottom:16px;">
-          <span style="color:#FACC15;font-size:14px;">★★★★★</span>
-        </div>
-        <p style="font-size:15px;color:rgba(255,255,255,0.75);line-height:1.7;">"We get compliments on our website every week. The team understood our brand better than we did. Organic traffic up 3× in 90 days."</p>
-      </div>
-      <div style="display:flex;align-items:center;gap:12px;padding-top:20px;border-top:1px solid rgba(255,255,255,0.06);">
-        <img src="https://placehold.co/40x40/1a2e20/4ADE80?text=JP" style="width:40px;height:40px;border-radius:50%;" />
-        <div>
-          <div style="font-size:14px;font-weight:600;">James Park</div>
-          <div style="font-size:12px;color:var(--text-muted);">CTO, NovaTech Industries</div>
-        </div>
-      </div>
-    </div>
-    <div class="feature-card" style="padding:28px;">
-      <div style="margin-bottom:20px;">
-        <div style="display:flex;gap:3px;margin-bottom:16px;">
-          <span style="color:#FACC15;font-size:14px;">★★★★★</span>
-        </div>
-        <p style="font-size:15px;color:rgba(255,255,255,0.75);line-height:1.7;">"From our first call to launch day was less than three weeks. I've worked with agencies that took three months and delivered less. Genuinely impressed."</p>
-      </div>
-      <div style="display:flex;align-items:center;gap:12px;padding-top:20px;border-top:1px solid rgba(255,255,255,0.06);">
-        <img src="https://placehold.co/40x40/2a1a20/F472B6?text=LC" style="width:40px;height:40px;border-radius:50%;" />
-        <div>
-          <div style="font-size:14px;font-weight:600;">Laura Chen</div>
-          <div style="font-size:12px;color:var(--text-muted);">Owner, Bloom Interiors</div>
-        </div>
-      </div>
-    </div>
-    <div class="feature-card" style="padding:28px;border-color:rgba(30,111,255,0.25);">
-      <div style="margin-bottom:20px;">
-        <div style="display:flex;gap:3px;margin-bottom:16px;">
-          <span style="color:#FACC15;font-size:14px;">★★★★★</span>
-        </div>
-        <p style="font-size:15px;color:rgba(255,255,255,0.75);line-height:1.7;">"Our old website was embarrassing. The new one has us ranking on the first page of Google and our phone hasn't stopped ringing since."</p>
-      </div>
-      <div style="display:flex;align-items:center;gap:12px;padding-top:20px;border-top:1px solid rgba(255,255,255,0.06);">
-        <img src="https://placehold.co/40x40/1a2840/60A5FA?text=DM" style="width:40px;height:40px;border-radius:50%;" />
-        <div>
-          <div style="font-size:14px;font-weight:600;">Daniel Murphy</div>
-          <div style="font-size:12px;color:var(--text-muted);">Director, Murphy Electrical</div>
-        </div>
-      </div>
-    </div>
-    <div class="feature-card" style="padding:28px;">
-      <div style="margin-bottom:20px;">
-        <div style="display:flex;gap:3px;margin-bottom:16px;">
-          <span style="color:#FACC15;font-size:14px;">★★★★★</span>
-        </div>
-        <p style="font-size:15px;color:rgba(255,255,255,0.75);line-height:1.7;">"I was sceptical about the monthly model but it's been worth every cent. The site is fast, looks incredible on mobile, and I never have to think about hosting."</p>
-      </div>
-      <div style="display:flex;align-items:center;gap:12px;padding-top:20px;border-top:1px solid rgba(255,255,255,0.06);">
-        <img src="https://placehold.co/40x40/1e2a1a/86EFAC?text=AT" style="width:40px;height:40px;border-radius:50%;" />
-        <div>
-          <div style="font-size:14px;font-weight:600;">Aoife Tierney</div>
-          <div style="font-size:12px;color:var(--text-muted);">Founder, Tierney Physio</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- ═══════════════════════════════════════
      PRICING
