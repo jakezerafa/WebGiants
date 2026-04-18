@@ -536,6 +536,7 @@
 </head>
 <body>
 
+
 <!-- ═══════════════════════════════════════
      NAV
 ═══════════════════════════════════════ -->
@@ -555,7 +556,7 @@
   </div>
 
   <div style="display:flex;align-items:center;gap:10px;">
-    <a href="#contact" class="btn-primary" style="padding:8px 18px;font-size:14px;">Get started</a>
+    <a href="#contact" class="btn-primary" style="padding:8px 18px;font-size:14px;">Start free trial</a>
     <button class="burger-btn" id="burger-btn" aria-label="Open menu" onclick="toggleMobileMenu()">
       <span></span><span></span><span></span>
     </button>
@@ -808,7 +809,7 @@
 
   <!-- CTAs -->
   <div class="animate-fadeinup delay-3" style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center;">
-    <a href="#contact" class="btn-primary" style="padding:14px 28px;font-size:16px;">See a free mockup of your site →</a>
+    <a href="#contact" class="btn-primary" style="padding:14px 28px;font-size:16px;">Get your site free for 30 days →</a>
     <a href="#results" class="btn-ghost" style="padding:14px 28px;font-size:16px;">See our work</a>
   </div>
 
@@ -821,6 +822,58 @@
 </section>
 
 
+
+<!-- ═══════════════════════════════════════
+     THE OFFER SECTION
+═══════════════════════════════════════ -->
+<section style="padding:100px 24px;border-top:1px solid rgba(255,255,255,0.06);background:var(--surface);position:relative;overflow:hidden;">
+  <div style="position:absolute;top:0;left:50%;transform:translateX(-50%);width:800px;height:500px;background:radial-gradient(ellipse at 50% 0%,rgba(30,111,255,0.09) 0%,transparent 70%);pointer-events:none;"></div>
+  <div style="max-width:1100px;margin:0 auto;position:relative;">
+
+    <!-- Header -->
+    <div style="text-align:center;margin-bottom:64px;">
+      <div class="tag" style="margin-bottom:20px;">The Offer</div>
+      <h2 class="t-hero" style="margin-bottom:24px;">We build your website.<br/><span class="grad-text">You pay nothing for 30 days.</span></h2>
+      <p class="t-largecopy" style="color:var(--text-secondary);max-width:560px;margin:0 auto;">If it doesn't bring in more business &mdash; cancel. Hassle free.</p>
+    </div>
+
+    <!-- 4 Value Pillars -->
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:64px;" class="offer-grid">
+      <div class="feature-card" style="padding:28px 24px;text-align:center;">
+        <div style="font-size:32px;margin-bottom:16px;">&#127919;</div>
+        <div style="font-size:13px;font-weight:700;color:#fff;letter-spacing:0.04em;text-transform:uppercase;margin-bottom:10px;">Dream Outcome</div>
+        <p style="font-size:14px;color:var(--text-secondary);line-height:1.6;margin:0;">A website that actively brings in more customers for your business</p>
+      </div>
+      <div class="feature-card" style="padding:28px 24px;text-align:center;">
+        <div style="font-size:32px;margin-bottom:16px;">&#9989;</div>
+        <div style="font-size:13px;font-weight:700;color:#fff;letter-spacing:0.04em;text-transform:uppercase;margin-bottom:10px;">Proven Results</div>
+        <p style="font-size:14px;color:var(--text-secondary);line-height:1.6;margin:0;">You see a live, working site before you pay a single cent</p>
+      </div>
+      <div class="feature-card" style="padding:28px 24px;text-align:center;">
+        <div style="font-size:32px;margin-bottom:16px;">&#9889;</div>
+        <div style="font-size:13px;font-weight:700;color:#fff;letter-spacing:0.04em;text-transform:uppercase;margin-bottom:10px;">48h Design</div>
+        <p style="font-size:14px;color:var(--text-secondary);line-height:1.6;margin:0;">See your design in 48 hours &mdash; live and running within 2 weeks</p>
+      </div>
+      <div class="feature-card" style="padding:28px 24px;text-align:center;">
+        <div style="font-size:32px;margin-bottom:16px;">&#128274;</div>
+        <div style="font-size:13px;font-weight:700;color:#fff;letter-spacing:0.04em;text-transform:uppercase;margin-bottom:10px;">Zero Risk</div>
+        <p style="font-size:14px;color:var(--text-secondary);line-height:1.6;margin:0;">No money upfront, no tech knowledge needed, no commitment</p>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div style="text-align:center;">
+      <a href="#contact" class="btn-primary" style="padding:16px 36px;font-size:17px;">Start your free trial &rarr;</a>
+      <p style="margin-top:16px;font-size:13px;color:var(--text-muted);">No card charged for 30 days &mdash; cancel anytime before then and pay nothing</p>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  @media(max-width:768px){.offer-grid{grid-template-columns:repeat(2,1fr)!important;}}
+  @media(max-width:480px){.offer-grid{grid-template-columns:1fr!important;}}
+</style>
 
 <!-- ═══════════════════════════════════════
      RESULTS SECTION
@@ -1391,17 +1444,16 @@
 <section id="pricing" class="section-pad" style="max-width:1100px;margin:0 auto;">
   <div style="text-align:center;margin-bottom:64px;">
     <div class="tag" style="margin-bottom:20px;">Pricing</div>
-    <h2 class="t-hero" style="margin-bottom:16px;">Choose a plan that<br/><span class="grad-text">works for you</span></h2>
-      </div>
+    <h2 class="t-hero" style="margin-bottom:16px;">Choose a plan that<br><span class="grad-text">works for you</span></h2>      </div>
 
   <div class="pricing-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:1060px;margin:0 auto;">
     <!-- Starter -->
     <div class="feature-card" style="padding:32px;">
       <div style="font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;color:var(--text-muted);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:16px;">Starter</div>
-      <div style="display:flex;align-items:baseline;gap:4px;margin-bottom:8px;">
+      <div style="display:flex;align-items:baseline;gap:4px;margin-bottom:4px;">
         <span style="font-family:'Syne',sans-serif;font-size:48px;font-weight:800;letter-spacing:-0.04em;">€199</span>
       </div>
-      <div style="font-size:14px;color:var(--text-muted);margin-bottom:28px;">per month</div>
+      <div style="font-size:14px;color:var(--text-muted);margin-bottom:28px;">per month after trial</div>
       <div class="divider" style="margin-bottom:24px;"></div>
       <ul style="display:flex;flex-direction:column;gap:12px;margin-bottom:32px;">
         <li style="font-size:14px;color:rgba(255,255,255,0.7);display:flex;gap:10px;align-items:center;"><span style="color:#28C840;">✓</span> Custom-designed single-page website</li>
@@ -1412,7 +1464,7 @@
         <li style="font-size:14px;color:rgba(255,255,255,0.25);display:flex;gap:10px;align-items:center;"><span>—</span> Google reviews integration</li>
         <li style="font-size:14px;color:rgba(255,255,255,0.25);display:flex;gap:10px;align-items:center;"><span>—</span> WhatsApp chat widget</li>
       </ul>
-      <a href="#contact" class="btn-ghost" style="display:block;text-align:center;">Get started</a>
+      <a href="#contact" class="btn-ghost" style="display:block;text-align:center;">Start free trial</a>
     </div>
 
     <!-- Growth (featured) -->
@@ -1420,10 +1472,10 @@
       <div style="position:absolute;top:-60px;right:-60px;width:200px;height:200px;background:radial-gradient(circle,rgba(30,111,255,0.2),transparent 70%);pointer-events:none;"></div>
       <div style="position:absolute;top:16px;right:16px;background:var(--blue);color:#fff;font-size:11px;font-weight:700;padding:4px 10px;border-radius:100px;letter-spacing:0.04em;">MOST POPULAR</div>
       <div style="font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;color:var(--blue-bright);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:16px;">Growth</div>
-      <div style="display:flex;align-items:baseline;gap:4px;margin-bottom:8px;">
+      <div style="display:flex;align-items:baseline;gap:4px;margin-bottom:4px;">
         <span style="font-family:'Syne',sans-serif;font-size:48px;font-weight:800;letter-spacing:-0.04em;">€299</span>
       </div>
-      <div style="font-size:14px;color:var(--text-muted);margin-bottom:28px;">per month</div>
+      <div style="font-size:14px;color:var(--text-muted);margin-bottom:28px;">per month after trial</div>
       <div class="divider" style="margin-bottom:24px;"></div>
       <ul style="display:flex;flex-direction:column;gap:12px;margin-bottom:32px;">
         <li style="font-size:14px;color:rgba(255,255,255,0.85);display:flex;gap:10px;align-items:center;"><span style="color:#28C840;">✓</span> Custom multi-page website (up to 5 pages)</li>
@@ -1434,16 +1486,16 @@
         <li style="font-size:14px;color:rgba(255,255,255,0.85);display:flex;gap:10px;align-items:center;"><span style="color:#28C840;">✓</span> Google reviews integration</li>
         <li style="font-size:14px;color:rgba(255,255,255,0.25);display:flex;gap:10px;align-items:center;"><span>—</span> WhatsApp chat widget</li>
       </ul>
-      <a href="#contact" class="btn-primary" style="display:block;text-align:center;">Get started</a>
+      <a href="#contact" class="btn-primary" style="display:block;text-align:center;">Start free trial</a>
     </div>
 
     <!-- Advanced -->
     <div class="feature-card" style="padding:32px;">
       <div style="font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;color:var(--text-muted);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:16px;">Advanced</div>
-      <div style="display:flex;align-items:baseline;gap:4px;margin-bottom:8px;">
+      <div style="display:flex;align-items:baseline;gap:4px;margin-bottom:4px;">
         <span style="font-family:'Syne',sans-serif;font-size:48px;font-weight:800;letter-spacing:-0.04em;">€499</span>
       </div>
-      <div style="font-size:14px;color:var(--text-muted);margin-bottom:28px;">per month</div>
+      <div style="font-size:14px;color:var(--text-muted);margin-bottom:28px;">per month after trial</div>
       <div class="divider" style="margin-bottom:24px;"></div>
       <ul style="display:flex;flex-direction:column;gap:12px;margin-bottom:32px;">
         <li style="font-size:14px;color:rgba(255,255,255,0.7);display:flex;gap:10px;align-items:center;"><span style="color:#28C840;">✓</span> Custom multi-page website (up to 10 pages)</li>
@@ -1454,7 +1506,7 @@
         <li style="font-size:14px;color:rgba(255,255,255,0.7);display:flex;gap:10px;align-items:center;"><span style="color:#28C840;">✓</span> Google reviews integration</li>
         <li style="font-size:14px;color:rgba(255,255,255,0.7);display:flex;gap:10px;align-items:center;"><span style="color:#28C840;">✓</span> WhatsApp chat widget</li>
       </ul>
-      <a href="#contact" class="btn-ghost" style="display:block;text-align:center;">Get started</a>
+      <a href="#contact" class="btn-ghost" style="display:block;text-align:center;">Start free trial</a>
     </div>
   </div>
   <!-- Not sure which plan button -->
@@ -1465,7 +1517,7 @@
   </div>
 
   <div style="margin:40px auto 0;max-width:1060px;padding:20px 28px;border:1px solid rgba(255,255,255,0.08);border-radius:16px;background:rgba(255,255,255,0.03);text-align:center;">
-    <p style="font-size:14px;color:var(--text-muted);line-height:1.7;"><span style="color:rgba(255,255,255,0.6);font-weight:600;">What's included in your monthly fee:</span> Hosting, domain, and security. No hidden fees. Cancel anytime.</p>
+    <p style="font-size:14px;color:var(--text-muted);line-height:1.7;"><span style="color:rgba(255,255,255,0.6);font-weight:600;">What's included in your monthly fee:</span> Hosting, domain, and security. 30-day free trial. Cancel anytime.</p>
   </div>
 </section>
 
@@ -1641,7 +1693,7 @@
         <div style="font-size:16px;font-weight:600;color:#fff;margin-bottom:12px;">${plan.price}</div>
         <p style="font-size:14px;color:rgba(255,255,255,0.6);line-height:1.6;">${plan.desc}</p>
       </div>
-      <a href="#contact" onclick="quizClose()" class="btn-primary" style="display:block;text-align:center;text-decoration:none;margin-bottom:12px;">Get started with ${plan.name} →</a>
+      <a href="#contact" onclick="quizClose()" class="btn-primary" style="display:block;text-align:center;text-decoration:none;margin-bottom:12px;">Start free trial with ${plan.name} →</a>
       <button onclick="quizOpen()" style="background:none;border:none;color:var(--text-muted);font-size:13px;cursor:pointer;font-family:inherit;padding:4px;">Retake the quiz</button>
     `;
   }
