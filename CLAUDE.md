@@ -49,7 +49,7 @@
 ## Reusable Components
 
 ### Google Reviews Integration
-When the user asks to "insert the Google reviews integration", add this section to the page. Place it after the testimonials section (or wherever the user specifies).
+When the user asks to "insert the Google reviews integration", they are referring to the **Rate Us page** in the WebGiants website (`rate-us.html` or equivalent). Recreate the same functionality and layout as that page, but restyled to match the target website's design system (colors, fonts, spacing, variables, button styles, etc.). Do not copy WebGiants styles verbatim — adapt everything to fit the site you're working on.
 
 **How it works:**
 - User taps 1–3 stars → internal feedback form appears ("How can we improve our service?" + textarea + submit)
@@ -141,6 +141,72 @@ When the user asks to "insert the Google reviews integration", add this section 
 **Before inserting:** ask the user for their Google review link (format: `https://search.google.com/local/writereview?placeid=PLACE_ID`) and replace `GOOGLE_REVIEW_URL_HERE`. If they don't have it yet, insert the placeholder and leave a comment.
 
 **Styling notes:** The component uses CSS variables (`--elevated`, `--border`, `--text-secondary`, `--text-muted`, `btn-primary`) from the WebGiants design system. For other sites, map these to the site's equivalent variables or replace with hardcoded values. Star color is Google yellow `#FBBC04`. Success state uses Google green `#34A853`.
+
+### WhatsApp Chat Widget
+When the user asks to "insert the WhatsApp widget" (or similar), add the floating WhatsApp chat widget from the WebGiants website. The **functionality and structure** stays the same, but **restyle everything** to match the target website (card background, border colors, shadow tints, border-radius, font styles, etc.). Keep the WhatsApp green `#25D366` for the bubble button and CTA — that's brand-fixed.
+
+**How it works:**
+- Floating bubble button fixed bottom-right
+- Click opens a popup card with a header, a greeting message bubble, and a "Start chat on WhatsApp" button
+- Click again (or ✕) closes the card
+- Button opens `https://wa.me/PHONE_NUMBER` in a new tab
+
+**Before inserting:** ask the user for their WhatsApp number (international format, no `+` or spaces, e.g. `35699123456`) and replace `WA_NUMBER_HERE`. Also replace the business name in the card header. If they don't have these yet, insert placeholders and leave a comment.
+
+**Insert this HTML + script block (just before `</body>`):**
+```html
+<!-- ═══════════════════════════════════════
+     WHATSAPP CHAT WIDGET
+═══════════════════════════════════════ -->
+<div id="wa-widget" style="position:fixed;bottom:24px;right:24px;z-index:900;display:flex;flex-direction:column;align-items:flex-end;gap:12px;">
+
+  <!-- Popup card -->
+  <div id="wa-card" style="display:none;width:300px;background:#0e1117;border:1px solid rgba(255,255,255,0.1);border-radius:20px;overflow:hidden;box-shadow:0 24px 80px rgba(0,0,0,0.6);animation:fadeInUp 0.3s cubic-bezier(.16,1,.3,1) both;">
+    <!-- Header -->
+    <div style="background:#25D366;padding:18px 20px;display:flex;align-items:center;gap:12px;">
+      <div style="width:42px;height:42px;border-radius:50%;background:rgba(0,0,0,0.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="#fff"><path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.52 3.66 1.42 5.18L2 22l4.95-1.38A9.96 9.96 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/></svg>
+      </div>
+      <div>
+        <div style="font-size:15px;font-weight:700;color:#fff;">BUSINESS_NAME_HERE</div>
+        <div style="font-size:12px;color:rgba(255,255,255,0.8);display:flex;align-items:center;gap:5px;margin-top:2px;">
+          <span style="width:7px;height:7px;background:#fff;border-radius:50%;display:inline-block;opacity:0.9;"></span>
+          Typically replies in minutes
+        </div>
+      </div>
+      <button onclick="waToggle()" style="margin-left:auto;background:none;border:none;cursor:pointer;padding:4px;color:rgba(255,255,255,0.8);font-size:18px;line-height:1;">✕</button>
+    </div>
+    <!-- Body -->
+    <div style="padding:20px;">
+      <div style="background:rgba(255,255,255,0.05);border-radius:4px 12px 12px 12px;padding:14px 16px;margin-bottom:20px;">
+        <p style="font-size:14px;color:rgba(255,255,255,0.85);line-height:1.6;margin:0;">Got a question? Let's chat on WhatsApp.</p>
+      </div>
+      <a href="https://wa.me/WA_NUMBER_HERE" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;gap:10px;background:#25D366;color:#fff;font-size:15px;font-weight:700;padding:14px;border-radius:12px;text-decoration:none;transition:background 0.2s ease;" onmouseenter="this.style.background='#1ebe5d'" onmouseleave="this.style.background='#25D366'">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" fill="#fff"/><path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.52 3.66 1.42 5.18L2 22l4.95-1.38A9.96 9.96 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm0 18a7.96 7.96 0 01-4.07-1.12l-.29-.17-3.01.84.85-2.94-.19-.3A7.96 7.96 0 014 12c0-4.418 3.582-8 8-8s8 3.582 8 8-3.582 8-8 8z" fill="#fff"/></svg>
+        Start chat on WhatsApp
+      </a>
+    </div>
+  </div>
+
+  <!-- Bubble button -->
+  <button onclick="waToggle()" id="wa-btn" aria-label="Chat on WhatsApp" style="width:58px;height:58px;border-radius:50%;background:#25D366;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 24px rgba(37,211,102,0.4),0 2px 8px rgba(0,0,0,0.3);transition:transform 0.2s cubic-bezier(.34,1.56,.64,1),box-shadow 0.2s ease;" onmouseenter="this.style.transform='scale(1.1)';this.style.boxShadow='0 6px 32px rgba(37,211,102,0.55),0 2px 8px rgba(0,0,0,0.3)'" onmouseleave="this.style.transform='scale(1)';this.style.boxShadow='0 4px 24px rgba(37,211,102,0.4),0 2px 8px rgba(0,0,0,0.3)'">
+    <svg id="wa-icon-open" width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" fill="#fff"/><path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.52 3.66 1.42 5.18L2 22l4.95-1.38A9.96 9.96 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm0 18a7.96 7.96 0 01-4.07-1.12l-.29-.17-3.01.84.85-2.94-.19-.3A7.96 7.96 0 014 12c0-4.418 3.582-8 8-8s8 3.582 8 8-3.582 8-8 8z" fill="#fff"/></svg>
+    <svg id="wa-icon-close" width="22" height="22" viewBox="0 0 24 24" fill="none" style="display:none;"><path d="M18 6L6 18M6 6l12 12" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/></svg>
+  </button>
+</div>
+
+<script>
+  let waOpen = false;
+  function waToggle() {
+    waOpen = !waOpen;
+    document.getElementById('wa-card').style.display = waOpen ? 'block' : 'none';
+    document.getElementById('wa-icon-open').style.display = waOpen ? 'none' : 'block';
+    document.getElementById('wa-icon-close').style.display = waOpen ? 'block' : 'none';
+  }
+</script>
+```
+
+**Restyling for other sites:** The card `background`, `border`, `box-shadow`, `border-radius`, and body text colors should be replaced to match the target site's surface/card styles. The WhatsApp green `#25D366` on the header, bubble button, and CTA link is always kept as-is.
 
 ---
 
